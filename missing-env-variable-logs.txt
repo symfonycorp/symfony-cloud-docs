@@ -1,0 +1,43 @@
+Found 1 new commit
+
+Building application 'myapp' (runtime type: php:7.3, tree: abcd123)
+  Generating runtime configuration.
+
+  Executing build hook...
+  [...]
+    W: Generating optimized autoload files
+    W: > Incenteev\ParameterHandler\ScriptHandler::buildParameters
+    Creating the "app/config/parameters.yml" file
+    W: > Sensio\Bundle\DistributionBundle\Composer\ScriptHandler::buildBootstrap
+    W: > Sensio\Bundle\DistributionBundle\Composer\ScriptHandler::clearCache
+
+    In EnvVarProcessor.php line 76:
+
+      Environment variable not found: "DATABASE_URL".
+
+
+    W: Script Sensio\Bundle\DistributionBundle\Composer\ScriptHandler::clearCache
+    W: handling the symfony-scripts event terminated with an exception
+    W:
+    W:
+    W:   [RuntimeException]
+    W:   An error occurred when executing the "'cache:clear --no-warmup'" command:
+    W:
+    W:
+    W:
+    W:
+    W:   In EnvVarProcessor.php line 76:
+    W:
+    W:     Environment variable not found: "DATABASE_URL".
+    W:
+    W:
+    W: install [--prefer-source] [--prefer-dist] [--dry-run] [--dev] [--no-dev]
+    W: [--no-custom-installers] [--no-autoloader] [--no-scripts] [--no-progress]
+    W: [--no-suggest] [-v|vv|vvv|--verbose] [-o|--optimize-autoloader]
+    W: [-a|--classmap-authoritative] [--apcu-autoloader] [--ignore-platform-reqs]
+    W: [--] [<packages>]...
+    W:
+
+  E: Error building project: The build hook failed with status code 1. Aborted build.
+
+E: Error: Unable to build application, aborting.
