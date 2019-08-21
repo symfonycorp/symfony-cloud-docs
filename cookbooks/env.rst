@@ -200,4 +200,5 @@ directly, such as the ``PATH`` variable:
 
 .. code-block:: terminal
 
-    $ export PATH=/app/vendor/bin:$PATH
+    # .environment
+    export PATH=/app/vendor/bin:$PATH
