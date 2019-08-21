@@ -151,9 +151,9 @@ prefixed with ``SYMFONY_*``:
 * ``SYMFONY_APP_DIR``: The absolute path to the application directory.
 
 * ``SYMFONY_APPLICATION_NAME``: The name of the application, as configured
-  in ``.symfony.cloud.yaml``
+  in ``.symfony.cloud.yaml``.
 
-* ``SYMFONY_PROJECT``: The ID of the project
+* ``SYMFONY_PROJECT``: The ID of the project.
 
 * ``SYMFONY_TREE_ID``: The ID of the tree the application was built from.
   It's essentially the SHA hash of the tree in Git. If you need a unique ID for
