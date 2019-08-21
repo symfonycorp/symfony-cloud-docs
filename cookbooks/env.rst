@@ -184,7 +184,7 @@ SymfonyCloud Services Environment Variables
 
 SymfonyCloud also exposes information about services via environment variables
 (check each service documentation to learn more about the specifics). List all
-SymfonyCloud environment variables with the following:
+SymfonyCloud environment variables with the following command:
 
 .. code-block:: terminal
 
