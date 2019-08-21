@@ -26,9 +26,7 @@ Cache can be configured in the ``.symfony/routes.yaml`` file like below:
 
     By default, responses issued with Symfony are not cacheable (``no-cache,
     private``). To make use of SymfonyCloud cache, set a shared max-age on
-    responses:
-
-    .. code-block:: php
+    responses::
 
         // src/Controller/DefaultController.php
         use Symfony\Component\HttpFoundation\Response;
@@ -259,9 +257,7 @@ And the SSI and fragments support in the Symfony configuration:
 
 Now, suppose you have a page that is relatively static, except for the current
 date included at the top of the content. With SSI, you can cache the date
-independently of the rest of the page:
-
-.. code-block:: php
+independently of the rest of the page::
 
     // src/Controller/DefaultController.php
 

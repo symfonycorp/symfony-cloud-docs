@@ -46,9 +46,7 @@ about where the variable was defined and inheritance is given:
 Accessing Environment Variables
 -------------------------------
 
-You can access environment variables using standard tools:
-
-.. code-block:: php
+You can access environment variables using standard tools::
 
     echo $_SERVER['PROJECT_VAR'];
 
@@ -131,6 +129,7 @@ your project and can be defined in the ``.symfony.cloud.yaml`` file:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     variables:
         env:
             APPLICATION_VAR: 'foo'
@@ -152,9 +151,9 @@ prefixed with ``SYMFONY_*``:
 * ``SYMFONY_APP_DIR``: The absolute path to the application directory.
 
 * ``SYMFONY_APPLICATION_NAME``: The name of the application, as configured
-  in ``.symfony.cloud.yaml``
+  in ``.symfony.cloud.yaml``.
 
-* ``SYMFONY_PROJECT``: The ID of the project
+* ``SYMFONY_PROJECT``: The ID of the project.
 
 * ``SYMFONY_TREE_ID``: The ID of the tree the application was built from.
   It's essentially the SHA hash of the tree in Git. If you need a unique ID for
@@ -185,7 +184,7 @@ SymfonyCloud Services Environment Variables
 
 SymfonyCloud also exposes information about services via environment variables
 (check each service documentation to learn more about the specifics). List all
-SymfonyCloud environment variables with the following:
+SymfonyCloud environment variables with the following command:
 
 .. code-block:: terminal
 
@@ -201,4 +200,5 @@ directly, such as the ``PATH`` variable:
 
 .. code-block:: terminal
 
-    $ export PATH=/app/vendor/bin:$PATH
+    # .environment
+    export PATH=/app/vendor/bin:$PATH
