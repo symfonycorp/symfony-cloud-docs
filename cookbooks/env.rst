@@ -46,9 +46,7 @@ about where the variable was defined and inheritance is given:
 Accessing Environment Variables
 -------------------------------
 
-You can access environment variables using standard tools:
-
-.. code-block:: php
+You can access environment variables using standard tools::
 
     echo $_SERVER['PROJECT_VAR'];
 
