@@ -129,6 +129,7 @@ your project and can be defined in the ``.symfony.cloud.yaml`` file:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     variables:
         env:
             APPLICATION_VAR: 'foo'
