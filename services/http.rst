@@ -2,10 +2,11 @@ HTTP
 ====
 
 If your project has :doc:`multiple applications</cookbooks/multi-apps>`, you can
-link them via ``relationships`` in ``.symfony.cloud.yaml``:
+link them via ``relationships``:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     relationships:
         database: "securitydb:postgresql"
         some-service: "some-server:http"
