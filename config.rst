@@ -456,7 +456,8 @@ tools:
 - `Symfony CLI <https://symfony.com/download>`_
 - `Composer <https://getcomposer.org/download/>`_
 
-Additionally, it creates two helpers: symfony-build_ and symfony-deploy_
+Additionally, it creates three helpers: symfony-build_, symfony-deploy_ and
+yarn-install_.
 
 .. _symfony-build:
 
@@ -465,8 +466,9 @@ Additionally, it creates two helpers: symfony-build_ and symfony-deploy_
 
 **symfony-build** is our recipe to build a Symfony application the best way
 possible. It removes the development frontend, install the application
-dependencies using Composer and Yarn, optimize the autoloader, build Symfony
-cache if possible and finally build the production assets using Encore.
+dependencies using Composer (and Yarn, by running `yarn-install`_), optimize the
+autoloader, build Symfony cache if possible and finally build the production
+assets using Encore.
 
 Composer install is run using default flag values. If you need to override those
 flags, you can define them using the ``$COMPOSER_FLAGS`` environment variable:
@@ -480,11 +482,25 @@ flags, you can define them using the ``$COMPOSER_FLAGS`` environment variable:
             curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
             (>&2 COMPOSER_FLAGS="--ignore-platform-reqs" symfony-build)
 
-Similarly you can customize Node setup and Yarn install behaviors using the
-following environment variables:
+One can also set ``NO_YARN`` to any value to disable all Yarn and assets
+automation during the ``symfony-build`` run.
 
-* ``NO_YARN``: Setting this to any value will disable all Yarn and assets
-  automation.
+.. _symfony-deploy:
+
+(>&2 symfony-deploy)
+....................
+
+**symfony-deploy** is to be used each time a Symfony application is deployed.
+Its purpose is to make Symfony cache used by the application if built by
+:doc:`symfony-build`, built it otherwise.
+
+yarn-install
+............
+
+**yarn-install** is a script that installs Node and Yarn the best way possible
+in a PHP container on SymfonyCloud. Similarly to Composer install, you can
+customize Node setup and Yarn install behaviors using the following environment
+variables:
 
 * ``NVM_DIR``: Directory used to install NVM and Node. Default value is
   ``/app/.nvm``.
@@ -494,8 +510,8 @@ following environment variables:
 
 * ``YARN_FLAGS``: Flags to pass to ``yarn install``. No value by default.
 
-Shall you need to use the Node installation setup by SymfonyCloud, you can use
-the following snippet:
+Shall you need to use the Node installation setup by symfony-build_, you can
+use the following snippet:
 
 .. code-block:: yaml
 
@@ -514,11 +530,26 @@ the following snippet:
                 yarn encore dev
             )
 
-.. _symfony-deploy:
+Or if you want to use two different Node versions:
 
-(>&2 symfony-deploy)
-....................
+.. code-block:: yaml
 
-**symfony-deploy** is to be used each time a Symfony application is deployed.
-Its purpose is to make Symfony cache used by the application if built by
-:doc:`symfony-build`, built it otherwise.
+    hooks:
+        build: |
+            set -x -e
+
+            curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
+            (>&2 symfony-build)
+            (>&2
+                cd web/js_app
+                unset NPM_CONFIG_PREFIX
+                export NVM_DIR=$HOME/.nvm
+
+                NODE_VERSION=8 yarn-install
+
+                # Setup everything to use the Node installation
+                set +x && . "${NVM_DIR}/nvm.sh" use 8 && set -x
+
+                # Starting from here, everything is setup to use Node 8
+                yarn build --environment=prod
+            )
