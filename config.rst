@@ -530,7 +530,7 @@ use the following snippet:
                 yarn encore dev
             )
 
-Or if you want to use two Node versions:
+Or if you want to use two different Node versions:
 
 .. code-block:: yaml
 
