@@ -10,14 +10,11 @@ first-class use-case with SymfonyCloud.
 Basics
 ------
 
-To deploy a worker, add an entry under the ``workers`` sections of the
-``.symfony.cloud.yaml``:
+To deploy a worker, add an entry under the ``workers`` section:
 
 .. code-block:: yaml
 
     # .symfony.cloud.yaml
-    # [...]
-
     workers:
         mails:
             commands:
