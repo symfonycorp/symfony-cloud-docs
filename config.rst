@@ -14,6 +14,7 @@ Symfony application using Flex:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     name: 'app'
 
     type: 'php:7.3'
@@ -156,6 +157,7 @@ from one deployment to the next:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     mounts:
         '/public/upload': { source: local, source_path: uploads }
 
@@ -182,6 +184,7 @@ dependencies for the following languages:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     dependencies:
         php:
             symfony/var-dumper: "*"
@@ -210,6 +213,7 @@ Defines how :doc:`services </services/intro>` are exposed to the application:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     relationships:
         database: "mydatabase:postgresql"
         elasticsearch: "mysearch:elasticsearch"
@@ -246,6 +250,7 @@ a specific configuration:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     web:
         locations:
             "/":
@@ -313,10 +318,11 @@ requests, in particular which protocol is used:
 
 .. code-block:: yaml
 
-  web:
-      upstream:
-          socket_family: tcp
-          protocol: http
+    # .symfony.cloud.yaml
+    web:
+        upstream:
+            socket_family: tcp
+            protocol: http
 
 * ``socket_family`` describes whether the application listens on a Unix socket
   (``unix``) or a TCP one (``tcp``, the default). When defined to ``unix``,
@@ -349,6 +355,7 @@ configuration:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     web:
         commands:
             start: "gunicorn -b $PORT project.wsgi:application"
@@ -361,6 +368,7 @@ times of an application lifecycle, build, deploy and post-deploy:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     hooks:
         build: |
             set -x -e
@@ -439,6 +447,7 @@ in the :doc:`What is SymfonyCloud? </intro>` article.
 
     .. code-block:: yaml
 
+        # .symfony.cloud.yaml
         hooks:
             deploy: |
                 if [[ "$SYMFONY_BRANCH" != "master" ]]; then
@@ -475,6 +484,7 @@ flags, you can define them using the ``$COMPOSER_FLAGS`` environment variable:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     hooks:
         build: |
             set -x -e
@@ -515,6 +525,7 @@ use the following snippet:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     hooks:
         build: |
             set -x -e
@@ -534,6 +545,7 @@ Or if you want to use two different Node versions:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     hooks:
         build: |
             set -x -e
