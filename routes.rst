@@ -26,7 +26,7 @@ basic ``.symfony/routes.yaml`` file:
 
 This configuration makes SymfonyCloud redirect all HTTP-only requests to HTTPS
 and forward HTTPS requests to the "app" application. For now, let's say that
-``{{default}}`` makes SymfonyCloud match the project's default domain for
+``{default}`` makes SymfonyCloud match the project's default domain for
 incoming requests.
 
 Route Patterns
