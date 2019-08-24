@@ -18,12 +18,12 @@ And wire it in ``.symfony.cloud.yaml`` (don't forget to enable the
 
 .. code-block:: yaml
 
-    runtime:
-        extensions:
-            - pdo_pgsql
-
     relationships:
         database: "mydatabase:postgresql"
+        
+    runtime:
+        extensions:
+            - pdo_pgsql        
 
 Environment Variables
 ---------------------
@@ -101,10 +101,11 @@ Extensions
 ----------
 
 SymfonyCloud supports a number of PostgreSQL extensions. To enable them, list
-them under the ``configuration.extensions`` key in your ``services.yaml`` file:
+them under the ``configuration.extensions`` key:
 
 .. code-block:: yaml
 
+    # .symfony/services.yaml
     postgresql:
         type: "postgresql:11"
         disk: 1025
