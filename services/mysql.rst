@@ -4,10 +4,11 @@ MySQL/MariaDB
 `MariaDB`_ is a MySQL-compatible relational database system. Its XtraDB storage
 engine is equivalent to MySQL with InnoDB.
 
-To use it in your application, add it to ``.symfony/services.yaml``:
+To use it in your application, add it to your ``.symfony/services.yaml``:
 
 .. code-block:: yaml
 
+    # .symfony/services.yaml
     mydatabase:
         # supported versions: 5.5, 10.0, 10.1, 10.2
         type: mysql:10.2
@@ -17,6 +18,7 @@ And wire it in ``.symfony.cloud.yaml``:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     relationships:
         database: "mydatabase:mysql"
 
@@ -135,6 +137,7 @@ Consider the following illustrative example:
 
 .. code-block:: yaml
 
+    # .symfony/services.yaml
     mysqldb:
         type: mysql:10.2
         disk: 2048
@@ -173,10 +176,11 @@ not be able to access the database on that relationship. For that reason the
 
 Once those endpoints are defined, you need to expose them to your application as
 a relationship. Continuing with our example, this would be a possible
-corresponding block from ``.symfony.cloud.yaml``:
+corresponding block under ``relationships``:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     relationships:
         database: "mysqldb:admin"
         reports: "mysqldb:reporter"
@@ -192,6 +196,7 @@ following default:
 
 .. code-block:: yaml
 
+    # .symfony/services.yaml
     configuration:
         schemas:
             - main
@@ -214,6 +219,7 @@ For version 10.2 and later, some MariaDB configuration properties from the
 
 .. code-block:: yaml
 
+    # .symfony/services.yaml
     mysqldb:
         type: mysql:10.2
         disk: 2048
