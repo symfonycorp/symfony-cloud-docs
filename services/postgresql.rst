@@ -18,12 +18,12 @@ And wire it in ``.symfony.cloud.yaml`` (don't forget to enable the
 
 .. code-block:: yaml
 
-    runtime:
-        extensions:
-            - pdo_pgsql
-
     relationships:
         database: "mydatabase:postgresql"
+        
+    runtime:
+        extensions:
+            - pdo_pgsql        
 
 Environment Variables
 ---------------------
