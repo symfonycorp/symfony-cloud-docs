@@ -102,7 +102,7 @@ amqp                           *    *    *    *
 apc             *
 apcu            *    *    *    *    *    *    *
 apcu_bc                        *    *    *    *
-applepay                       *    *
+applepay                       *    *         *
 bcmath                         *    *    *    *
 blackfire       *    *    *    *    *    *    *
 bu                             *    *    *    *
@@ -137,7 +137,7 @@ mailparse                      *    *    *
 mbstring                       *    *    *    *
 mcrypt          *    *    *    *    *
 memcache        *    *    *
-memcached       *    *    *    *    *    *
+memcached       *    *    *    *    *    *    *
 mongo           *    *    *
 mongodb                        *    *    *    *
 msgpack                   *    *    *    *
@@ -156,7 +156,7 @@ pdo_mysql       *    *    *    *    *    *    *
 pdo_odbc        *    *    *    *    *    *    *
 pdo_pgsql       *    *    *    *    *    *    *
 pdo_sqlite      *    *    *    *    *    *    *
-pdo_sqlsrv                     *    *    *
+pdo_sqlsrv                     *    *    *    *
 pgsql           *    *    *    *    *    *    *
 phar                           *    *    *    *
 pinba           *    *    *
@@ -176,7 +176,7 @@ sockets                        *    *    *    *
 sodium                                   *    *
 spplus          *    *
 sqlite3         *    *    *    *    *    *    *
-sqlsrv                         *    *    *
+sqlsrv                         *    *    *    *
 ssh2            *    *    *    *    *    *    *
 sysvmsg                        *    *    *    *
 sysvsem                        *    *    *    *
