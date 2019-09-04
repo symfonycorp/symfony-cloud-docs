@@ -7,6 +7,7 @@ To use it in your application, add it to ``.symfony/services.yaml``:
 
 .. code-block:: yaml
 
+    # .symfony/services.yaml
     mysearch:
         # supported versions: 5.2, 5.4 and 6.5
         # 0.90, 1.4, 1.7 and 2.4 are also available but not maintained upstream
@@ -17,6 +18,7 @@ And wire it in ``.symfony.cloud.yaml``:
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     relationships:
         elasticsearch: "mysearch:elasticsearch"
 
