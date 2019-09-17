@@ -196,7 +196,7 @@ PHP extension. You simply need to enable it in your ``.symfony.cloud.yaml``
 Upgrading
 ---------
 
-.. warning::
+.. caution::
 
     Make sure you first test your migration on a separate environment.
     Be sure to take a snapshot of your master environment **before** you merge this change.
