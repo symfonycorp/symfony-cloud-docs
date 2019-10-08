@@ -67,7 +67,7 @@ used in the ``workers`` section.
 This flag is available for the following commands:
 
 - ``symfony env:cp``
-- ``symfony env:log``
+- ``symfony env:logs``
 - ``symfony env:sql``
 - ``symfony env:ssh``
 - ``symfony db:dump``
