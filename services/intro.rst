@@ -81,7 +81,7 @@ redefined this minimum if necessary.
 For example, the current default storage amount per project is 5GB (meaning
 5120MB) which you can distribute between your application (as defined in
 ``.symfony.cloud.yaml``) and each of its services. For memory-resident-only
-services such as ``memcache`` or ``redis``, the disk key is required and will
+services such as ``memcache`` or ``redis``, the disk key is not required and will
 generate an error if present.
 
 .. note::
