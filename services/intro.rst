@@ -76,7 +76,7 @@ Disk
 
 The ``disk`` attribute is the size of the persistent disk (in MB) allocated to
 the service. The default minimum disk size is 16MB but each service can
-redefined this minimum if necessary.
+redefine this minimum if necessary.
 
 For example, the current default storage amount per project is 5GB (meaning
 5120MB) which you can distribute between your application (as defined in
