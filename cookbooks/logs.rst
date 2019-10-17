@@ -70,7 +70,7 @@ uncaught exceptions. It also contains your application logs if you log on
     .. code-block:: terminal
 
         # tail on /app/app/logs/prod.log
-        $ symfony log prod --tail
+        $ symfony log prod
 
 ``cron.log``
 ~~~~~~~~~~~~
