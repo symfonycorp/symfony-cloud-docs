@@ -210,7 +210,7 @@ it is possible to use **A** records.
 
 This process has a few limitations:
 
-* Should SymfonyCloud ever need to change one of out IPs, your configuration
+* Should SymfonyCloud ever need to change one of our IPs, your configuration
   will need to be manually updated (some requests will be lost in the meantime).
 
 * Using an IP means that your requests will be directly pointing at a
