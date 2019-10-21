@@ -13,12 +13,12 @@ basic ``.symfony/routes.yaml`` file:
 
 .. code-block:: yaml
 
-    "http://{default}/":
+    "http://{all}/":
         type: redirect
         # Redirect from HTTP to HTTPS
-        to: "https://{default}/"
+        to: "https://{all}/"
 
-    "https://{default}/":
+    "https://{all}/":
         type: upstream
         # Route requests to the "app" application
         # ("app" is the name defined in .symfony.cloud.yaml)
@@ -41,15 +41,15 @@ If more than one route match an incoming request, the most specific definition
 
 .. code-block:: yaml
 
-    "http://{default}/":
+    "http://{all}/":
         type: upstream
         upstream: "app:http"
 
-    "http://{default}/login":
+    "http://{all}/login":
         type: redirect
-        to: "https://{default}/login"
+        to: "https://{all}/login"
 
-    "https://{default}/":
+    "https://{all}/":
         type: upstream
         upstream: "app:http"
 
@@ -58,8 +58,8 @@ HTTP requests to ``/login`` that are redirected to HTTPS.
 
 Two special **placeholders** are available to use in route patterns:
 
-* ``{default}`` will match the default domain of a project.
 * ``{all}`` will match any domain (think about it like ``.*`` for Regexes)
+* ``{default}`` will only match the default domain of a project.
 
 Placeholders can be used in any part of the host name, for example
 ``https://{default}/`` or ``https://www.{default}/``.
@@ -85,17 +85,17 @@ different applications:
 
 .. code-block:: yaml
 
-    "http://{default}/":
+    "http://{all}/":
         type: redirect
-        to: "https://{default}/"
+        to: "https://{all}/"
 
-    "https://{default}/":
+    "https://{all}/":
         type: upstream
         # Route requests to the "app" application
         # "app" is the name defined in .symfony.cloud.yaml
         upstream: "app:http"
 
-    "https://{default}/blog":
+    "https://{all}/blog":
         type: upstream
         # Route requests to the "blog" application
         # "blog" is the name defined in another .symfony.cloud.yaml
@@ -126,7 +126,7 @@ A route can also be defined as an absolute URL. For example:
 
 .. code-block:: yaml
 
-    "https://{default}/":
+    "https://{all}/":
         type: upstream
         upstream: "app:http"
 
