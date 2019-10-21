@@ -465,8 +465,8 @@ tools:
 - `Symfony CLI <https://symfony.com/download>`_
 - `Composer <https://getcomposer.org/download/>`_
 
-Additionally, it creates three helpers: symfony-build_, symfony-deploy_ and
-yarn-install_.
+Additionally, it creates four helpers: symfony-build_, symfony-deploy_,
+symfony-database-migrate_ and yarn-install_.
 
 .. _symfony-build:
 
@@ -493,7 +493,7 @@ flags, you can define them using the ``$COMPOSER_FLAGS`` environment variable:
             (>&2 COMPOSER_FLAGS="--ignore-platform-reqs" symfony-build)
 
 One can also set ``NO_YARN`` to any value to disable all Yarn and assets
-automation during the ``symfony-build`` run.
+automation during the symfony-build_ run.
 
 .. _symfony-deploy:
 
@@ -502,7 +502,22 @@ automation during the ``symfony-build`` run.
 
 **symfony-deploy** is to be used each time a Symfony application is deployed.
 Its purpose is to make Symfony cache used by the application if built by
-:doc:`symfony-build`, built it otherwise.
+symfony-build_, built it otherwise. When ran from the web container, it
+also runs the symfony-database-migrate_ helper.
+
+.. _symfony-database-migrate:
+
+(>&2 symfony-database-migrate)
+..............................
+
+You usually don't need to worry about this helper.
+**symfony-database-migrate** purpose is to run database migrations. By default,
+it will run your Doctrine migrations if ``doctrine/doctrine-migrations-bundle``
+is installed. If your application uses another migration system you can
+override ``/app/.global/bin/symfony-database-migrate`` during build time and
+symfony-deploy_ will make use of it. You can use this script at any moment if
+you need to run migrations manually or if you need to run them for
+:doc:`workers </cookbooks/workers>`.
 
 yarn-install
 ............
