@@ -105,7 +105,7 @@ Your application has complete access to all services, but the filesystem where
 your code lives is now read-only.
 
 The default deploy step for Symfony replaces the current cache with the newly
-warmed up one and runs Doctrine migrations if any.
+warmed up one and, for the web container, runs Doctrine migrations if any.
 
 Finally, we open the floodgates and let incoming requests through your newly
 deployed application. You are done!
