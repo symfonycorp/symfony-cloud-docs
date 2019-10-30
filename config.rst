@@ -298,12 +298,20 @@ Here is the reference of ``location`` configurations:
   PHP application, the value is the path to the front controller such as
   ``/index.php`` or ``/app.php``. The default value is ``false``.
 
-* ``rules`` defines rules to override current settings for some requests. The
-  key is a PCRE regular expression that is matched against the full request URI,
-  content is the same structure as `locations`_ configuration.
+* ``headers`` defines any additional headers to apply to static assets. This
+  section is a mapping of header names to header values. Responses sent by the
+  application aren't affected.
 
 * ``allow`` allows or disallows serving files which don't match a rule. Possible
   values are ``true`` or ``false``, default is ``true``.
+
+* ``request_buffering`` allows to enable or disable request buffering. As most
+  application servers do not support chunked requests (e.g. fpm, uwsgi),
+  ``request_buffering`` is enabled by default.
+
+* ``rules`` defines rules to override current settings for some requests. The
+  key is a PCRE regular expression that is matched against the full request URI,
+  content is the same structure as `locations`_ configuration.
 
 Upstream
 ........
