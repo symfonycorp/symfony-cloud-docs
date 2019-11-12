@@ -105,7 +105,6 @@ apcu_bc                        *    *    *    *
 applepay                       *    *         *
 bcmath                         *    *    *    *
 blackfire       *    *    *    *    *    *    *
-bu                             *    *    *    *
 bz2                            *    *    *    *
 calendar                       *    *    *    *
 ctype                          *    *    *    *
@@ -122,7 +121,7 @@ gearman         *    *    *
 geoip           *    *    *    *    *    *    *
 gettext                        *    *    *    *
 gmp             *    *    *    *    *    *    *
-http            *    *    *                   *
+http            *    *                        *
 iconv                          *    *    *    *
 igbinary                       *    *    *    *
 imagick         *    *    *    *    *    *    *
@@ -130,10 +129,9 @@ imap            *    *    *    *    *    *    *
 interbase       *    *    *    *    *    *    *
 intl            *    *    *    *    *    *    *
 ioncube                        *    *    *
-ixed                           *    *
 json                      *    *    *    *    *
 ldap            *    *    *    *    *    *    *
-mailparse                      *    *    *
+mailparse                      *    *    *    *
 mbstring                       *    *    *    *
 mcrypt          *    *    *    *    *
 memcache        *    *    *
@@ -145,7 +143,7 @@ mssql           *    *    *
 mysql           *    *    *
 mysqli          *    *    *    *    *    *    *
 mysqlnd         *    *    *    *    *    *    *
-newrelic                  *
+newrelic                  *    *    *    *    *
 oauth                          *    *    *    *
 odbc            *    *    *    *    *    *    *
 opcache              *    *    *    *    *    *
@@ -157,6 +155,7 @@ pdo_odbc        *    *    *    *    *    *    *
 pdo_pgsql       *    *    *    *    *    *    *
 pdo_sqlite      *    *    *    *    *    *    *
 pdo_sqlsrv                     *    *    *    *
+pecl-http                 *
 pgsql           *    *    *    *    *    *    *
 phar                           *    *    *    *
 pinba           *    *    *
@@ -174,6 +173,7 @@ snmp            *    *    *    *    *    *    *
 soap                           *    *    *    *
 sockets                        *    *    *    *
 sodium                                   *    *
+sourceguardian                 *    *    *
 spplus          *    *
 sqlite3         *    *    *    *    *    *    *
 sqlsrv                         *    *    *    *
@@ -181,13 +181,13 @@ ssh2            *    *    *    *    *    *    *
 sysvmsg                        *    *    *    *
 sysvsem                        *    *    *    *
 sysvshm                        *    *    *    *
-tideways                       *    *    *
+tideways                       *    *    *    *
 tidy            *    *    *    *    *    *    *
 tokenizer                      *    *    *    *
 uuid                                *    *    *
 wddx                           *    *    *    *
 xcache          *    *
-xdebug          *    *    *    *    *    *
+xdebug          *    *    *    *    *    *    *
 xhprof          *    *    *
 xml                            *    *    *    *
 xmlreader                      *    *    *    *
