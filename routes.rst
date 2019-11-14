@@ -101,6 +101,8 @@ different applications:
         # "blog" is the name defined in another .symfony.cloud.yaml
         upstream: "blog:http"
 
+.. _wildcard_routes:
+
 Wildcard Routes
 ~~~~~~~~~~~~~~~
 
@@ -110,7 +112,18 @@ as any other routes; routed to an application or redirected to another one.
 To create a wildcard route, prefix the route with a star (``*``). For example
 ``*.example.com`` matches any HTTP requests to ``www.example.com``,
 ``blog.example.com``, or ``us.example.com`` once the wildcard domain
-(``*.example.com``) is added to the project.
+(``*.example.com``) is added to the project:
+
+.. code-block:: yaml
+
+    "https://{all}/":
+        type: upstream
+        upstream: "app:http"
+
+    "https://*.{default}/":
+        type: upstream
+        upstream: "app:http"
+
 
 .. caution::
 

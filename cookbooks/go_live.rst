@@ -78,8 +78,9 @@ layer to route requests to the project for a specific domain:
 
 .. tip::
 
-    Multiple domains can be attached to a project. Wildcard domains (like
-    ``*.example.com``) are also supported.
+    Multiple domains can be attached to a project. :ref:`wildcard_routes` (like
+    ``*.example.com``) are also supported using the ``.symfony/routes.yaml``
+    file.
 
 If you require access to the project before the domain name switch is done, you
 can create a ``hosts`` file entry on your computer and point it directly to one
