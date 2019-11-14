@@ -22,7 +22,7 @@ To deploy a worker, add an entry under the ``workers`` section:
                     set -x -e
 
                     (>&2 symfony-deploy)
-                    php bin/console messenger:consume
+                    php bin/console messenger:consume --time-limit 60 --memory-limit=128M
 
 On SymfonyCloud, worker containers run the exact same code as the web container.
 The container image is built only once, and then deployed multiple times in its
