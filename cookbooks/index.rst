@@ -14,6 +14,7 @@ Cookbooks
     cache
     snapshots
     api_tokens
+    private_dependencies
     users
     security
     redirects
