@@ -202,7 +202,7 @@ Commit the change:
 
 .. code-block:: terminal
 
-    $ git commit -a -m"Update text"
+    $ git commit -a -m "Update text"
     $ # in a real-life scenario, you would push the change to the upstream Git repository
 
 And deploy the change to the ``feat-a`` environment:
