@@ -17,7 +17,7 @@ Symfony application using Flex:
     # .symfony.cloud.yaml
     name: 'app'
 
-    type: 'php:7.3'
+    type: 'php:7.4'
 
     build:
         flavor: 'none'
