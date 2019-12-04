@@ -207,6 +207,12 @@ zip                            *    *    *    *    *
     you SSH into your environment: ``ls /etc/php/*/mods-available`` (for PHP 5
     run ``ls /etc/php5/mods-available``).
 
+.. note::
+
+    Starting with PHP 7.4, the ``redis`` PECL extension is not longer included
+    because this library had several API breaks. Instead, we recommend the use
+    of the `predis package`_ which works across all supported PHP versions.
+
 Custom PHP Extensions
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -514,3 +520,4 @@ Use the ``env:fpm:status`` command to inspect what's going on with PHP-FPM:
     last request memory:  0
 
 .. _`PHP-FPM`: https://php-fpm.org/
+.. _`predis package`: https://packagist.org/packages/predis/predis/
