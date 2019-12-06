@@ -11,6 +11,7 @@ To use it in your application, add it to your ``.symfony/services.yaml``:
     # .symfony/services.yaml
     mydatabase:
         # supported versions: 5.5, 10.0, 10.1, 10.2
+        # 5.5 is also available but not maintained upstream
         type: mysql:10.2
         disk: 1024
 
@@ -21,6 +22,16 @@ And wire it in ``.symfony.cloud.yaml``:
     # .symfony.cloud.yaml
     relationships:
         database: "mydatabase:mysql"
+
+Oracle's `MySQL`_ is also available using ``oracle-mysql``:
+
+.. code-block:: yaml
+
+    # .symfony/services.yaml
+    mydatabase:
+        # supported versions: 5.7, 8.0
+        type: oracle-mysql:8.0
+        disk: 1024
 
 Environment Variables
 ---------------------
@@ -255,3 +266,4 @@ SymfonyCloud will automatically restart the worker process, and the new process
 can establish its own new database connection.
 
 .. _`MariaDB`: https://en.wikipedia.org/wiki/MariaDB
+.. _`MySQL`: https://en.wikipedia.org/wiki/MySQL
