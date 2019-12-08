@@ -37,7 +37,7 @@ On Symfony projects using Flex, install Swiftmailer:
 
 .. code-block:: terminal
 
-    $ composer require mailer
+    $ composer require swiftmailer
 
 No further configuration is needed as the default configuration knows how to use
 the value of ``MAILER_URL`` automatically.
