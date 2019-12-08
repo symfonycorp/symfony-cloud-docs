@@ -33,16 +33,16 @@ The configuration is exposed via the following environment variables:
 Usage
 -----
 
-On Symfony projects using Flex, install Swiftmailer:
+On Symfony projects using Flex, install Symfony Mailer:
 
 .. code-block:: terminal
 
     $ composer require mailer
 
-No further configuration is needed as the default configuration knows how to use
-the value of ``MAILER_URL`` automatically.
+No further configuration is needed as the default configuration knows how to
+use the value of ``MAILER_URL`` automatically.
 
-For other applications, use ``MAILER_URL`` with Swiftmailer or use the
+For other applications, use ``MAILER_URL`` with Symfony Mailer or use the
 ``MAILER_*`` environment variables to configure your framework of choice.
 
 .. caution::
