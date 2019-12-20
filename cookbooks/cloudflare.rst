@@ -89,7 +89,7 @@ To enabled this setup, follow these steps:
    the "DNS" section of the Cloudflare backend;
 2. Download the Cloudflare Authenticated Origin Pulls CA certificate
    `origin-pull-ca.pem
-   <https://support.cloudflare.com/hc/en-us/article_attachments/201243967/origin-pull-ca.pem>`_
+   <https://support.cloudflare.com/hc/en-us/article_attachments/360044928032/origin-pull-ca.pem>`_
    and add it to the ``.symfony`` directory of the project to protect;
 3. Adapt the ``.symfony/routes.yaml`` file as follows:
 
