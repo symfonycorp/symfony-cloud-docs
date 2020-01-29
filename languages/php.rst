@@ -401,6 +401,10 @@ enable the Xdebug extension, etc.:
 
     $ symfony var:set php:memory_limit=256M
 
+Settings defined as environment variables have precedence over the ones defined
+in ``.symfony.cloud.yaml``, which has precedence over the ones defined in
+``php.ini``.
+
 Error Handling
 ~~~~~~~~~~~~~~
 
