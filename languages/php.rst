@@ -355,7 +355,7 @@ site has lot of traffic). As an example, consider the following output:
 
 This indicates that the majority of requests (4800) used 2048 KB of memory. In
 this case that's likely application caching at work. Most requests used up to
-around 10 MB of memory, while a few used as much as 18 MB and a very very few
+around 10 MB of memory, while a few used as much as 18 MB and a very few
 (6 requests) peaked at 131 MB.
 
 A conservative approach would suggest an average request memory of 16 MB should

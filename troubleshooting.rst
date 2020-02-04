@@ -15,6 +15,7 @@ They are four possible reasons to why you might encounter this error:
    upload it.
 
    .. caution::
+
        Please note that SymfonyCloud and SymfonyConnect SSH keys are currently
        differentiated: even if you previously uploaded your key to SymfonyConnect,
        you have to reupload it using the command mentionned above.
@@ -151,7 +152,7 @@ upper. When migrating, one needs not to forget to define defaults in the
         // config/services.php
         $container->setParameter('env(DATABASE_URL)', 'mysql://db_user:db_password@127.0.0.1:3306/db_name');
 
-.. caution ::
+.. caution::
 
    Symfony applications created before November 2018 had a slightly different
    system, involving a ``.env.dist`` file. For information about upgrading, see:
