@@ -260,7 +260,6 @@ date included at the top of the content. With SSI, you can cache the date
 independently of the rest of the page::
 
     // src/Controller/DefaultController.php
-
     use Symfony\Component\HttpFoundation\Response;
     // ...
 
