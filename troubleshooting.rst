@@ -15,6 +15,7 @@ They are four possible reasons to why you might encounter this error:
    upload it.
 
    .. caution::
+
        Please note that SymfonyCloud and SymfonyConnect SSH keys are currently
        differentiated: even if you previously uploaded your key to SymfonyConnect,
        you have to reupload it using the command mentionned above.
