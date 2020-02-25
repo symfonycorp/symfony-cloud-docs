@@ -262,8 +262,8 @@ modify the cron schedules listed to match your use case.
                    croncape symfony env:snapshot:create --no-wait
                fi
        renewcert:
-           # Force a redeploy at 8 am (UTC) on the 14th and 28th of every month.
-           spec: '0 8 14,28 * *'
+           # Force a redeploy at 4 am (UTC) on the 14th and 28th of every month.
+           spec: '0 4 14,28 * *'
            cmd: |
                if [ "$SYMFONY_BRANCH" = master ]; then
                    croncape symfony env:redeploy --no-wait
