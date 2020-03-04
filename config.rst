@@ -91,7 +91,7 @@ Type
 The **type** value defines the application language and the version to use.
 Current supported values are:
 
-* :ref:`php </languages/php>`
+* :doc:`php </languages/php>`
 * nodejs
 * python
 * ruby

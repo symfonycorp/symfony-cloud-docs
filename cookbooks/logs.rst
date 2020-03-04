@@ -76,7 +76,7 @@ uncaught exceptions. It also contains your application logs if you log on
 ~~~~~~~~~~~~
 
 The ``cron`` log contains the output of all recent executions of
-:ref:`cron jobs </cookbooks/crons>`. If there is no cron hook specified in the
+:doc:`cron jobs </cookbooks/crons>`. If there is no cron hook specified in the
 container configuration or if no cron has been executed yet, then this file will
 be absent.
 

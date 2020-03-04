@@ -87,11 +87,11 @@ To enabled this setup, follow these steps:
    Cloudflare backend;
 2. Make sure the project has the "HTTP Proxy" feature enabled (orange cloud) in
    the "DNS" section of the Cloudflare backend;
-2. Download the Cloudflare Authenticated Origin Pulls CA certificate
+3. Download the Cloudflare Authenticated Origin Pulls CA certificate
    `origin-pull-ca.pem
    <https://support.cloudflare.com/hc/en-us/article_attachments/360044928032/origin-pull-ca.pem>`_
    and add it to the ``.symfony`` directory of the project to protect;
-3. Adapt the ``.symfony/routes.yaml`` file as follows:
+4. Adapt the ``.symfony/routes.yaml`` file as follows:
 
    .. code-block:: yaml
 
@@ -104,5 +104,5 @@ To enabled this setup, follow these steps:
                    - !include
                        type: string
                        path: origin-pull-ca.pem
-4. ``git add .symfony/origin-pull-ca.pem .symfony/routes.yaml && git commit``;
-5. ``symfony deploy``
+5. ``git add .symfony/origin-pull-ca.pem .symfony/routes.yaml && git commit``;
+6. ``symfony deploy``
