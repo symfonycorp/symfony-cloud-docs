@@ -13,9 +13,9 @@ To use it in your application, add it to ``.symfony/services.yaml``:
         type: postgresql:12
         disk: 1024
 
-.. note::
+.. caution::
 
-   Upgrading to PostgreSQL 12 using the ``postgis`` extension is not currently
+   Upgrading to PostgreSQL 12 using the ``postgis`` extension is currently not
    supported. Attempting to upgrade with this extension enabled will result in
    a failed deployment that will require support intervention to fix.
 
@@ -218,7 +218,7 @@ previous version of PostgreSQL to version 10 or above (by modifying the
 
 .. caution::
 
-   Upgrading to PostgreSQL 12 using the ``postgis`` extension is not currently
+   Upgrading to PostgreSQL 12 using the ``postgis`` extension is currently not
    supported. Attempting to upgrade with this extension enabled will result in
    a failed deployment that will require support intervention to fix.
 
