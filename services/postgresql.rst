@@ -8,10 +8,18 @@ To use it in your application, add it to ``.symfony/services.yaml``:
 .. code-block:: yaml
 
     mydatabase:
-        # supported versions: 9.6, 10, 11
+        # supported versions: 9.6, 10, 11, 12
         # 9.3 is also available but not maintained upstream
-        type: postgresql:11
+        type: postgresql:12
         disk: 1024
+
+.. note::
+
+   Upgrading to PostgreSQL 12 using the ``postgis`` extension is not currently
+   supported. Attempting to upgrade with this extension enabled will result in
+   a failed deployment that will require support intervention to fix.
+
+   See the :ref:`postgres_upgrading` section below for more details.
 
 And wire it in ``.symfony.cloud.yaml`` (don't forget to enable the
 ``pdo_pgsql`` PHP extension):
@@ -20,10 +28,10 @@ And wire it in ``.symfony.cloud.yaml`` (don't forget to enable the
 
     relationships:
         database: "mydatabase:postgresql"
-        
+
     runtime:
         extensions:
-            - pdo_pgsql        
+            - pdo_pgsql
 
 Environment Variables
 ---------------------
@@ -107,7 +115,7 @@ them under the ``configuration.extensions`` key:
 
     # .symfony/services.yaml
     postgresql:
-        type: "postgresql:11"
+        type: "postgresql:12"
         disk: 1025
         configuration:
             extensions:
@@ -193,6 +201,8 @@ message 'could not find driver'``, this means you are missing the ``pdo_pgsql``
 PHP extension. You simply need to enable it in your ``.symfony.cloud.yaml``
 (see above).
 
+.. _postgres_upgrading:
+
 Upgrading
 ---------
 
@@ -205,6 +215,15 @@ PostgreSQL 10 and later include an upgrade utility that can convert databases
 from previous versions to version 10 or 11. If you upgrade your service from a
 previous version of PostgreSQL to version 10 or above (by modifying the
 ``services.yaml`` file) the upgrader will run automatically.
+
+.. caution::
+
+   Upgrading to PostgreSQL 12 using the ``postgis`` extension is not currently
+   supported. Attempting to upgrade with this extension enabled will result in
+   a failed deployment that will require support intervention to fix.
+
+   If you need to upgrade, you should follow the same steps recommended for
+   performing downgrades.
 
 The upgrader does not work to upgrade to PostgreSQL 9 versions, so upgrades
 from PostgreSQL 9.3 to 9.6 are not supported. Upgrade straight to version 10 or
