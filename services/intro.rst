@@ -18,6 +18,7 @@
     solr
     varnish
     kafka
+    network-storage
 
 Configure Services
 ------------------
@@ -149,3 +150,4 @@ Available services
 * :doc:`solr`
 * :doc:`varnish`
 * :doc:`kafka`
+* :doc:`network-storage`
