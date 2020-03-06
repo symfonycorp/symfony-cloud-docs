@@ -20,10 +20,10 @@ And wire it in ``.symfony.cloud.yaml``:
         '/var': { source: local, source_path: var }
         '/public/uploads': { source: service, service: files, source_path: uploads }
 
-The ``public/uploads`` directory can now be read from and write to as usual and
-several containers can acces this dictory and share the **same** files. The
-``var`` directory however stays "local" and will not be shared by the different
-containers.
+The ``public/uploads`` directory can now be read from and written to as usual
+and several containers can access this directory and share the **same** files.
+The ``var`` directory however stays "local" and will not be shared between
+different containers.
 
 .. note::
 
