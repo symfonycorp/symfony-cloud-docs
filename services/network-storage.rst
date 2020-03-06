@@ -18,8 +18,8 @@ And wire it in ``.symfony.cloud.yaml``:
 .. code-block:: yaml
 
     mounts:
-        "/var": { source: local, source_path: var }
-        "/public/uploads": { source: service, service: files, source_path: uploads }
+        '/var': { source: local, source_path: var }
+        '/public/uploads': { source: service, service: files, source_path: uploads }
 
 .. note::
 
@@ -31,12 +31,12 @@ as if it was a local writeable mount.
 
 .. note::
 
-    There is a small performance hit for using a network mount over a local
-    mount but in most cases it should not be noticeable. Please note that
+    There is a small performance impact for using a network mount over a local
+    mount, but in most cases it should not be noticeable. Please note that
     high-volume sequential file creation may experience a more significant
-    performance hit.
+    performance impact.
 
-How can I migrate a local storage to a network storage?
+How can I migrate a Local Storage to a Network Storage?
 -------------------------------------------------------
 
 There is no automated way of transferring data from one storage type to
@@ -48,13 +48,13 @@ mount:
 .. code-block:: yaml
 
     mounts:
-        "/var": { source: local, source_path: var }
-        "/public/uploads": { source: local, source_path: uploads }
+        '/var': { source: local, source_path: var }
+        '/public/uploads': { source: local, source_path: uploads }
 
 The following approximate steps will do so with a minimum of service interruption.
 
-1. Add a new ``network-storage`` service named `files`, that has at least
-   enough space for your existing files with some buffer
+1. Add a new ``network-storage`` service named ``files``, that has at least
+   enough space for your existing files with some buffer.
 
    .. note::
 
@@ -66,19 +66,19 @@ The following approximate steps will do so with a minimum of service interruptio
    .. code-block:: yaml
 
        mounts:
-           "/var": { source: local, source_path: var }
-           "/public/uploads": { source: local, source_path: uploads }
-           "/new-uploads": { source: service, service: files, source_path: uploads }
+           '/var': { source: local, source_path: var }
+           '/public/uploads': { source: local, source_path: uploads }
+           '/new-uploads': { source: service, service: files, source_path: uploads }
 
-3. Deploy the changes.
-4. Connect to your container using ``symfony ssh``
+3. Deploy the changes;
+4. Connect to your container using ``symfony ssh``;
 5. Use ``rsync`` to copy all files from the local mount to the network mount:
 
    .. code-block:: terminal
 
       $ rsync -avz web/uploads/* new-uploads/
 
-5. Reverse the mounts, commit and deploy:
+6. Reverse the mounts, commit and deploy:
 
    .. code-block:: yaml
 
@@ -87,17 +87,16 @@ The following approximate steps will do so with a minimum of service interruptio
            "/old-uploads": { source: local, source_path: uploads }
            "/public/uploads": { source: service, service: files, source_path: uploads }
 
-5) Run rsync one more time to make sure any files uploaded during the
-   transition are not lost.
+7. Run ``rsync`` again to make sure all files uploaded during the transition are moved.
 
    .. code-block:: terminal
 
       $ rsync -avz old-uploads/* web/uploads/
 
-6. Once you're confident all the files are accounted for, delete the entire
+8. Once you're confident that all files are accounted for, delete the entire
    contents of ``old-uploads``. If you do not, the files will remain on disk
    but inaccessible, just eating up disk space needlessly.
 
-7. Once that is done you can remove the ``old-uploads`` mount and push again to
+9. Once done, you can remove the ``old-uploads`` mount and push again to
    finish the process. You are also free to reduce the ``disk`` size in the
    ``.symfony.cloud.yaml`` file if desired.
