@@ -56,10 +56,10 @@ The following approximate steps will do so with a minimum of service interruptio
 1. Add a new ``network-storage`` service named ``files``, that has at least
    enough space for your existing files with some buffer.
 
-   .. note::
+   .. caution::
 
-       You may need to increase your project's allocated storage to do
-       this.
+       You may need to increase your project's allocated storage to do this.
+       This operation is not reversible and will incur charges.
 
 2. Add a new mount to the network storage service on a non-public directory:
 
