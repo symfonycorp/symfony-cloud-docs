@@ -3,9 +3,8 @@ Network Storage
 
 The network storage service provides a file store and enables a new kind of
 ``mount`` that can be shared between different application containers.
-application containers.
 
-To use it in your application, add it to ``.symfony/services.yaml``:
+To use it in your project, add it to ``.symfony/services.yaml``:
 
 .. code-block:: yaml
 
@@ -21,13 +20,15 @@ And wire it in ``.symfony.cloud.yaml``:
         '/var': { source: local, source_path: var }
         '/public/uploads': { source: service, service: files, source_path: uploads }
 
+The ``public/uploads`` directory can now be read from and write to as usual and
+several containers can acces this dictory and share the **same** files. The
+``var`` directory however stays "local" and will not be shared by the different
+containers.
+
 .. note::
 
    You do **not** need to add a relationship to point to the ``files`` service.
    This is handled automatically by SymfonyCloud.
-
-The application can now read from and write to the ``public/uploads`` directory
-as if it was a local writeable mount.
 
 .. note::
 
@@ -40,7 +41,7 @@ How can I migrate a Local Storage to a Network Storage?
 -------------------------------------------------------
 
 There is no automated way of transferring data from one storage type to
-another. Fundamentally, the process is consists in moving files around.
+another. The process consists in moving files around.
 
 Suppose you have this mount configuration and want to move to a network storage
 mount:
@@ -51,7 +52,7 @@ mount:
         '/var': { source: local, source_path: var }
         '/public/uploads': { source: local, source_path: uploads }
 
-The following approximate steps will do so with a minimum of service interruption.
+The following steps will do so with a minimum of service interruption.
 
 1. Add a new ``network-storage`` service named ``files``, that has at least
    enough space for your existing files with some buffer.
@@ -96,8 +97,7 @@ The following approximate steps will do so with a minimum of service interruptio
       $ rsync -avz old-uploads/* web/uploads/
 
 8. Once you're confident that all files are accounted for, delete the entire
-   contents of ``old-uploads``. If you do not, the files will remain on disk
-   using disk space.
+   contents of ``old-uploads``.
 
 9. Once done, you can remove the ``old-uploads`` mount and push again to
    finish the process. You are also free to reduce the ``disk`` size in the
