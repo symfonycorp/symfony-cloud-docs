@@ -63,12 +63,12 @@ The following approximate steps will do so with a minimum of service interruptio
 
 2. Add a new mount to the network storage service on a non-public directory:
 
-   .. code-block:: yaml
+   .. code-block:: diff
 
        mounts:
            '/var': { source: local, source_path: var }
            '/public/uploads': { source: local, source_path: uploads }
-           '/new-uploads': { source: service, service: files, source_path: uploads }
+    +      '/new-uploads': { source: service, service: files, source_path: uploads }
 
 3. Deploy the changes;
 4. Connect to your container using ``symfony ssh``;
@@ -80,12 +80,14 @@ The following approximate steps will do so with a minimum of service interruptio
 
 6. Reverse the mounts, commit and deploy:
 
-   .. code-block:: yaml
+   .. code-block:: diff
 
        mounts:
-           "/var": { source: local, source_path: var }
-           "/old-uploads": { source: local, source_path: uploads }
-           "/public/uploads": { source: service, service: files, source_path: uploads }
+           '/var': { source: local, source_path: var }
+    -      '/public/uploads': { source: local, source_path: uploads }
+    +      '/old-uploads': { source: local, source_path: uploads }
+    -      '/new-uploads': { source: service, service: files, source_path: uploads }
+    +      '/public/uploads': { source: service, service: files, source_path: uploads }
 
 7. Run ``rsync`` again to make sure all files uploaded during the transition are moved.
 
@@ -95,7 +97,7 @@ The following approximate steps will do so with a minimum of service interruptio
 
 8. Once you're confident that all files are accounted for, delete the entire
    contents of ``old-uploads``. If you do not, the files will remain on disk
-   but inaccessible, just eating up disk space needlessly.
+   using disk space.
 
 9. Once done, you can remove the ``old-uploads`` mount and push again to
    finish the process. You are also free to reduce the ``disk`` size in the
