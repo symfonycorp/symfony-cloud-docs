@@ -24,7 +24,7 @@ To use it in your application, add it to ``.symfony/services.yaml``:
 
 .. code-block:: yaml
 
-    rediscache:
+    myredis:
         # supported versions: 3.2, 4.0, 5.0
         # 2.8 and 3.0 are also available but not maintained upstream
         type: redis:5.0
@@ -43,7 +43,7 @@ To use it in your application, add it to ``.symfony/services.yaml``:
 
 .. code-block:: yaml
 
-    redisdata:
+    myredis:
         # supported versions: 3.2, 4.0, 5.0
         # 2.8 and 3.0 are also available but not maintained upstream
         type: redis-persistent:5.0
