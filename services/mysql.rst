@@ -10,9 +10,9 @@ To use it in your application, add it to your ``.symfony/services.yaml``:
 
     # .symfony/services.yaml
     mydatabase:
-        # supported versions: 5.5, 10.0, 10.1, 10.2
-        # 5.4 is also available but not maintained upstream
-        type: mysql:10.2
+        # supported versions: 10.0, 10.1, 10.2, 10.3, 10.4
+        # 5.5 is also available but not maintained upstream
+        type: mysql:10.4
         disk: 1024
 
 And wire it in ``.symfony.cloud.yaml``:
