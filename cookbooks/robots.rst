@@ -1,7 +1,7 @@
 robots.txt
 ==========
 
-By default, SymfonyCloud includes an additional ``X-Robots-Tag`` header on all
+SymfonyCloud includes an additional ``X-Robots-Tag`` header on all
 non-production environments:
 
 .. code-block:: text
