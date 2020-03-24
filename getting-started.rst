@@ -110,7 +110,7 @@ Then, create a new SymfonyCloud project:
 .. caution::
 
     Each SymfonyCloud project is billed monthly according to the chosen plan
-    (except the first month of your first development project), don't forget to
+    (except the first seven days of your currently active trial development project), don't forget to
     :ref:`delete your project <delete-project>` if you don't use it and don't
     want to be billed for it.
 
