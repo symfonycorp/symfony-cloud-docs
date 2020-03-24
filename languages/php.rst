@@ -99,13 +99,13 @@ versions where they can be enabled:
 ==============  ===  ===  ===  ===  ===  ===  ===  ===
 Extension       5.4  5.5  5.6  7.0  7.1  7.2  7.3  7.4
 ==============  ===  ===  ===  ===  ===  ===  ===  ===
-amqp                           *    *    *    *
+amqp                           *    *    *    *    *
 apc             *
-apcu            *    *    *    *    *    *    *
-apcu_bc                        *    *    *    *
+apcu            *    *    *    *    *    *    *    *
+apcu_bc                        *    *    *    *    *
 applepay                       *    *         *    *
 bcmath                         *    *    *    *    *
-blackfire       *    *    *    *    *    *    *
+blackfire       *    *    *    *    *    *    *    *
 bz2                            *    *    *    *    *
 calendar                       *    *    *    *    *
 ctype                          *    *    *    *    *
@@ -113,58 +113,59 @@ curl            *    *    *    *    *    *    *    *
 dba                            *    *    *    *    *
 dom                            *    *    *    *    *
 enchant         *    *    *    *    *    *    *    *
-event                               *    *    *
+event                               *    *    *    *
 exif                           *    *    *    *    *
+ffi                                                *
 fileinfo                       *    *    *    *    *
 ftp                            *    *    *    *    *
 gd              *    *    *    *    *    *    *    *
 gearman         *    *    *
-geoip           *    *    *    *    *    *    *
+geoip           *    *    *    *    *    *    *    *
 gettext                        *    *    *    *    *
 gmp             *    *    *    *    *    *    *    *
-http            *    *                        *
+http            *    *                        *    *
 iconv                          *    *    *    *    *
-igbinary                       *    *    *    *
+igbinary                       *    *    *    *    *
 imagick         *    *    *    *    *    *    *
 imap            *    *    *    *    *    *    *    *
-interbase       *    *    *    *    *    *    *
+interbase       *    *    *    *    *    *    *    *
 intl            *    *    *    *    *    *    *    *
-ioncube                        *    *    *
+ioncube                        *    *    *    *
 json                      *    *    *    *    *    *
 ldap            *    *    *    *    *    *    *    *
-mailparse                      *    *    *    *
+mailparse                      *    *    *    *    *
 mbstring                       *    *    *    *    *
 mcrypt          *    *    *    *    *
 memcache        *    *    *
-memcached       *    *    *    *    *    *    *
+memcached       *    *    *    *    *    *    *    *
 mongo           *    *    *
 mongodb                        *    *    *    *
-msgpack                   *    *    *    *
+msgpack                   *    *    *    *    *    *
 mssql           *    *    *
 mysql           *    *    *
 mysqli          *    *    *    *    *    *    *    *
 mysqlnd         *    *    *    *    *    *    *    *
 newrelic                  *    *    *    *    *    *
-oauth                          *    *    *    *
+oauth                          *    *    *    *    *
 odbc            *    *    *    *    *    *    *    *
 opcache              *    *    *    *    *    *    *
 pdo             *    *    *    *    *    *    *    *
 pdo_dblib       *    *    *    *    *    *    *    *
-pdo_firebird    *    *    *    *    *    *    *
+pdo_firebird    *    *    *    *    *
 pdo_mysql       *    *    *    *    *    *    *    *
 pdo_odbc        *    *    *    *    *    *    *    *
 pdo_pgsql       *    *    *    *    *    *    *    *
 pdo_sqlite      *    *    *    *    *    *    *    *
-pdo_sqlsrv                     *    *    *    *
+pdo_sqlsrv                     *    *    *    *    *
 pecl-http                 *
 pgsql           *    *    *    *    *    *    *    *
 phar                           *    *    *    *    *
 pinba           *    *    *
 posix                          *    *    *    *    *
-propro                    *                   *
+propro                    *                   *    *
 pspell          *    *    *    *    *    *    *    *
 pthreads                            *    *
-raphf                     *                   *
+raphf                     *                   *    *
 readline        *    *    *    *    *    *    *    *
 recode          *    *    *    *    *    *    *
 redis           *    *    *    *    *    *    *
@@ -174,18 +175,19 @@ snmp            *    *    *    *    *    *    *    *
 soap                           *    *    *    *    *
 sockets                        *    *    *    *    *
 sodium                                   *    *    *
-sourceguardian                 *    *    *
+sourceguardian                 *    *    *    *
 spplus          *    *
 sqlite3         *    *    *    *    *    *    *    *
-sqlsrv                         *    *    *    *
-ssh2            *    *    *    *    *    *    *
+sqlsrv                         *    *    *    *    *
+ssh2            *    *    *    *    *    *    *    *
 sysvmsg                        *    *    *    *    *
 sysvsem                        *    *    *    *    *
 sysvshm                        *    *    *    *    *
 tideways                       *    *    *    *    *
+tideways_xhprof                *    *    *    *    *
 tidy            *    *    *    *    *    *    *    *
 tokenizer                      *    *    *    *    *
-uuid                                *    *    *
+uuid                                *    *    *    *
 wddx                           *    *    *    *
 xcache          *    *
 xdebug          *    *    *    *    *    *    *    *
@@ -195,7 +197,7 @@ xmlreader                      *    *    *    *    *
 xmlrpc          *    *    *    *    *    *    *    *
 xmlwriter                      *    *    *    *    *
 xsl             *    *    *    *    *    *    *    *
-yaml                                *    *    *
+yaml                                *    *    *    *
 zbarcode                       *    *    *    *
 zendopcache     *
 zip                            *    *    *    *    *
