@@ -11,8 +11,8 @@ To use it in your application, add it to ``.symfony/services.yaml``:
 .. code-block:: yaml
 
     mysearch:
-        # supported versions: 3.6, 4.10, 6.3, 6.6, 7.6, 7.7, 8.0
-        type: solr:8.0
+        # supported versions: 3.6, 4.10, 6.3, 6.6, 7.6, 7.7, 8.0, 8.4
+        type: solr:8.4
         disk: 1024
 
 And wire it in ``.symfony.cloud.yaml``:
@@ -104,7 +104,7 @@ by all cores. Specific details can then be overridden by individual cores using
 .. code-block:: yaml
 
     solrsearch:
-        type: solr:8.0
+        type: solr:8.4
         disk: 1024
         configuration:
             configsets:
@@ -139,7 +139,7 @@ If no configuration is specified, the default configuration is equivalent to:
 .. code-block:: yaml
 
     solrsearch:
-        type: solr:8.0
+        type: solr:8.4
         configuration:
             cores:
                 collection1:

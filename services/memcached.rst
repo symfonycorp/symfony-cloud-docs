@@ -14,8 +14,8 @@ To use it in your application, add it to ``.symfony/services.yaml``:
 .. code-block:: yaml
 
     memcached:
-        # supported versions: 1.4
-        type: memcached:1.4
+        # supported versions: 1.4, 1.5, 1.6
+        type: memcached:1.6
 
 And wire it in ``.symfony.cloud.yaml``:
 
