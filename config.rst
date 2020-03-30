@@ -458,7 +458,7 @@ in the :doc:`What is SymfonyCloud? </intro>` article.
         # .symfony.cloud.yaml
         hooks:
             deploy: |
-                if [[ "$SYMFONY_BRANCH" != "master" ]]; then
+                if [ "$SYMFONY_BRANCH" != "master" ]; then
                     symfony console app:dev:anonymize
                 fi
 
