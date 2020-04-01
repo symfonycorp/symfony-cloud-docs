@@ -405,7 +405,7 @@ Three hooks are available:
   At this time, the application source code is checked out, global
   `dependencies`_ are installed and the filesystem can be written at will but no
   :doc:`services </services/intro>` are available. This is the best time to run
-  heavy-duty tasks than can be performed offline such as assets build or Symfony
+  heavy-duty tasks that can be performed offline such as assets build or Symfony
   container compilation.
 
   .. caution::
