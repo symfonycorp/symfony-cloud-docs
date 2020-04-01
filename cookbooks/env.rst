@@ -174,10 +174,34 @@ will evaluate to an empty string like any other unset variable:
   the Git branch.
 
 * ``SYMFONY_DEFAULT_ROUTE_URL``: The default endpoint serving your application.
-  It can be used to avoid hard-coding domains that can't be used to reach
+  It can be used to avoid hard-coding domains that can be used to reach
   non-production environments. Parts of the URL (scheme, domain, port and path)
   are also exposed each in their own variable whose name starts with
   ``SYMFONY_DEFAULT_ROUTE_`` followed by the name of the part.
+
+  .. note::
+
+    Only routes with an ``upstream`` are considered, redirect routes are
+    ignored.
+
+  .. tip::
+
+    Guessing the default endpoint is usually straightforward but can become
+    complicated for multi-routes or multi-applications projects. For these
+    cases, the following preference order is used:
+
+    #. project wide route defined only by ``{default}`` or ``{all}`` (no path)
+    #. project wide route defined by ``www.{default}`` or ``www.{all}``
+       (no path)
+    #. route for the **current application** including ``{default}`` or
+       ``{all}`` (might include a path)
+    #. route for the **current application** including ``www.{default}`` or
+       ``www.{all}`` (might include a path)
+    #. first route for the current application
+    #. first route for the whole project
+
+    When several routes match a rule, the first one wins, the user order is
+    kept. There's no preference regarding protocols.
 
 SymfonyCloud Services Environment Variables
 -------------------------------------------
