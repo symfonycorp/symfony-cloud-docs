@@ -46,7 +46,7 @@ executed in the ``/app`` directory by the same user as the Web one.
 To get feedback when something goes wrong, prefix the command with
 ``croncape``. ``croncape`` will send an email to the address defined by the
 ``MAILTO`` environment variable. Don't forget to set it first via the following
-command for the ``master`` environment:
+command:
 
 .. code-block:: terminal
 
@@ -60,18 +60,18 @@ command for the ``master`` environment:
     their nightly tasks at the same time. Your crons will not run exactly at the
     time that you specify, but will be delayed by 0-300 seconds.
 
-.. note::
+.. warning::
 
     Cron runs are executed using the dash shell, not the bash shell used by
-    normal SSH logins. In most cases that makes no differences but may impact
-    some more involved cron scripts.
+    regular SSH sessions. In most cases that makes no differences but may
+    impact some more involved cron scripts.
 
 .. note::
 
     If an application defines both a ``web`` instance and a ``worker`` instance,
     cron tasks will be run only on the ``web`` instance.
 
-.. note::
+.. tip::
 
     If you want to run a command in a cron hook for specific environments, check
     the ``SYMFONY_BRANCH`` environment variable:
@@ -87,10 +87,10 @@ command for the ``master`` environment:
                         croncape symfony ... --no-wait
                     fi
 
-Running a Cron Remotely
+Running a Cron Manually
 -----------------------
 
-You can force a cron to run remotely by running the ``cron`` command (it takes
+You can force a cron to run manually by running the ``cron`` command (it takes
 the cron name as an argument as specified in ``.symfony.cloud.yaml``):
 
 .. code-block:: terminal
