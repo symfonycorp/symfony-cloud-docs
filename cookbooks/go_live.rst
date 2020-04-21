@@ -279,14 +279,15 @@ space. Notifications can be sent via email, Slack, or PagerDuty:
 
    $ symfony integration:add
    Please select the type of integration you want to add:
-    [0] github
-    [1] gitlab
-    [2] health.email
-    [3] health.pagerduty
-    [4] health.slack
-    [5] hipchat
-    [6] webhook
-    > 2
+   [0] bitbucket
+   [1] github
+   [2] gitlab
+   [3] health.email
+   [4] health.pagerduty
+   [5] health.slack
+   [6] hipchat
+   [7] webhook
+    > 3
    From (email): cloud@example.com
    Recipients: team@example.com
    Created integration efelccbyabjdi (type: health.email).
