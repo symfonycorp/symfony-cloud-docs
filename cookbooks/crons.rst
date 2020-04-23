@@ -95,7 +95,7 @@ command:
     the provided :doc:`SymfonyCloud SMTP </services/emails>` service; even if
     you define your own ``MAILER_*`` environment variables.
 
-    If you wish to use a custom SMTP and/or use a custom send address you need
+    If you wish to use a custom SMTP and/or use a custom sender address you need
     to follow these steps:
 
     #. Define the sender address by defining the ``MAILFROM`` environment
