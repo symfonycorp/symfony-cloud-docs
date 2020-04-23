@@ -87,6 +87,26 @@ command:
                         croncape symfony ... --no-wait
                     fi
 
+.. note::
+
+    To ensure better reliability, by default ``croncape`` sends its emails
+    using ``project-id@cron.noreply.s5y.io`` as the sender address
+    (``project-id+branch@cron.noreply.s5y.io`` for non-master environments) and
+    the provided :doc:`SymfonyCloud SMTP </services/emails>` service; even if
+    you define your own ``MAILER_*`` environment variables.
+
+    If you wish to use a custom SMTP and/or use a custom sender address you need
+    to follow these steps:
+
+    #. Define the sender address by defining the ``MAILFROM`` environment
+       variable;
+    #. Define the environment variables required to use your own email
+       service, refers to the :doc:`email </services/emails>`
+       documentation to check their names. Please note that only SMTP
+       connections are supported;
+    #. Disable the provided SMTP service using
+       ``symfony env:setting:set smtp off``
+
 Running a Cron Manually
 -----------------------
 
