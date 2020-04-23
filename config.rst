@@ -558,7 +558,7 @@ use the following snippet:
             (>&2
                 # Setup everything to use the Node installation
                 unset NPM_CONFIG_PREFIX
-                export NVM_DIR=$HOME/.nvm
+                export NVM_DIR=${SYMFONY_APP_DIR}/.nvm
                 set +x && . "${NVM_DIR}/nvm.sh" use --lts && set -x
                 # Starting from here, everything is setup to use the same Node
                 yarn encore dev
@@ -578,7 +578,7 @@ Or if you want to use two different Node versions:
             (>&2
                 cd web/js_app
                 unset NPM_CONFIG_PREFIX
-                export NVM_DIR=$HOME/.nvm
+                export NVM_DIR=${SYMFONY_APP_DIR}/.nvm
 
                 NODE_VERSION=8 yarn-install
 
