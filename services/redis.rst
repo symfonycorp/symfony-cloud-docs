@@ -13,6 +13,10 @@ useful for application caching).
     Versions 3.0 and higher support up to 64 different databases per instance of
     the service, but Redis 2.8 is configured to support only a single database.
 
+.. warning::
+
+    .. include:: ../_includes/php-redis-warning.rst
+
 Ephemeral Redis
 ---------------
 
