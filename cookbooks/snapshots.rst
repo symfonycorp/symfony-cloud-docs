@@ -49,7 +49,7 @@ application container itself via a cron task:
             cmd: |
                 # only snapshot the master environment, aka production
                 if [ "$SYMFONY_BRANCH" = master ]; then
-                    croncape symfony snapshot:create --no-wait
+                    croncape symfony env:snapshot:create --no-wait
                 fi
 
 For the command to work, `set up an authentication token <api_tokens.html>`_.
