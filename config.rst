@@ -462,6 +462,8 @@ in the :doc:`What is SymfonyCloud? </intro>` article.
                     symfony console app:dev:anonymize
                 fi
 
+.. _configurator:
+
 curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
 ...............................................................
 
@@ -473,8 +475,8 @@ tools:
 - `Symfony CLI <https://symfony.com/download>`_
 - `Composer <https://getcomposer.org/download/>`_
 
-Additionally, it creates four helpers: symfony-build_, symfony-deploy_,
-symfony-database-migrate_ and yarn-install_.
+Additionally, it creates some helpers: symfony-build_, symfony-deploy_,
+symfony-database-migrate_, php-ext-install_, and yarn-install_.
 
 .. _symfony-build:
 
@@ -526,6 +528,50 @@ override ``/app/.global/bin/symfony-database-migrate`` during build time and
 symfony-deploy_ will make use of it. You can use this script at any moment if
 you need to run migrations manually or if you need to run them for
 :doc:`workers </cookbooks/workers>`.
+
+.. _php-ext-install:
+
+php-ext-install
+...............
+
+**php-ext-install** is a script that you can use to compile and install PHP
+extensions not provided :ref:`out of the box <php-extensions-list>` by
+SymfonyCloud. It is written specifically for SymfonyCloud to ensure fast and
+reliable setup during the :ref:`build step <build-hook>`. It currently supports
+three ways to fetch the sources from:
+
+* From PECL: ``php-ext-install redis 5.2.2``
+
+* From a URL: ``php-ext-install redis https://github.com/phpredis/phpredis/archive/5.2.2.tar.gz``
+
+* From a Git repository: ``php-ext-install redis https://github.com/phpredis/phpredis.git 5.2.2``
+
+To ensure your application can be built properly, it is recommended to run
+``php-ext-install`` after the configurator_ but before symfony-build_:
+
+.. code-block:: yaml
+
+    # .symfony.cloud.yaml
+    hooks:
+        build: |
+            set -x -e
+
+            curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
+            (>&2
+                php-ext-install redis 5.2.2
+                symfony-build
+            )
+
+.. note::
+
+   Source code is cached between builds and compilation is skipped if it has
+   already been done. Changing the source of downloads or the version will
+   invalidate this cache.
+
+.. tip::
+
+   When downloading the source code, the compression algorithm will be
+   automatically detected. The usual algorithms used by GNU tar are supported.
 
 yarn-install
 ............

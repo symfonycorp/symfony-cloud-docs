@@ -90,6 +90,8 @@ The following extensions are enabled by default:
 * zip
 * zlib
 
+.. _php-extensions-list:
+
 Available PHP Extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
