@@ -538,7 +538,7 @@ php-ext-install
 extensions not provided :ref:`out of the box <php-extensions-list>` by
 SymfonyCloud. It is written specifically for SymfonyCloud to ensure fast and
 reliable setup during the :ref:`build step <build-hook>`. It currently supports
-three sources to fetch the sources:
+three ways to fetch the sources from:
 
 * From PECL: ``php-ext-install redis 5.2.2``
 
