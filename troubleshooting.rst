@@ -18,7 +18,7 @@ They are four possible reasons to why you might encounter this error:
 
        Please note that SymfonyCloud and SymfonyConnect SSH keys are currently
        differentiated: even if you previously uploaded your key to SymfonyConnect,
-       you have to reupload it using the command mentionned above.
+       you have to reupload it using the command mentioned above.
 
 #. SSH keys propagation can take some time and you've been too fast. Try again
    to use ``symfony ssh`` or ``symfony env:deploy`` after a couple of minutes
@@ -26,7 +26,7 @@ They are four possible reasons to why you might encounter this error:
 #. You've been recently added to a new project (**only impacts**
    ``symfony ssh``): after adding new users to a project, a new deployment
    or a redeployment is required before the new users can access the project.
-   If no deployment occured since you've been granted access to the project,
+   If no deployment occurred since you've been granted access to the project,
    use ``symfony env:redeploy``, wait for the end of the deployment and try
    again to access the project (this must be done for every environment).
 #. You are using Windows.
