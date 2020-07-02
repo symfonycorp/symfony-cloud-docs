@@ -23,3 +23,4 @@ Cookbooks
     multi-apps
     robots
     cloudflare
+    symfony_no_flex

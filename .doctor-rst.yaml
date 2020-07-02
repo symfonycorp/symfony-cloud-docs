@@ -34,3 +34,12 @@ rules:
     indention: ~
     unused_links: ~
     yaml_instead_of_yml_suffix: ~
+
+# do not report those as violation
+whitelist:
+    lines:
+        # Those references legacy Symfony applications
+        - '# app/config/config.yml'
+        - '- { resource: parameters.yml }'
+        - '- { resource: security.yml }'
+        - '- { resource: services.yml }'
