@@ -228,7 +228,7 @@ available endpoints exposed by the service.
 .. note::
 
     See the :doc:`Services documentation </services/intro>` for a complete
-    description of currently supported service types, endpoints and associated
+    description of currently supported services types, endpoints and associated
     environment variables.
 
 Web

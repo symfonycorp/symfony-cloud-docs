@@ -1,33 +1,37 @@
 SymfonyCloud without Flex
 =========================
 
-SymfonyCloud experience is optimal when Symfony applications are using Flex, but
-not every project has been migrated to Flex yet. Even if you are using Symfony
-2.x or 3.x, you can start using SymfonyCloud and actually leverage some of its
-features to ease the migration to Symfony 4 and Flex.
+The SymfonyCloud experience is optimized for Symfony applications using Flex,
+but not every project has been migrated to Flex yet. Even if you are using
+Symfony 2.x or 3.x, you can start using SymfonyCloud and actually leverage some
+of its features to ease the migration to Symfony 4 and Flex.
 
 .. tip::
 
-   Although this guide helps you setuping your own project for SymfonyCloud, we
-   suggest you first follow the :doc:`Getting Started </getting-started>`
+   Although this guide helps you setting up your own project for SymfonyCloud,
+   we suggest you first follow the :doc:`Getting Started </getting-started>`
    guide with a brand new Symfony 4 project and a free trial to get a better
    understanding of SymfonyCloud features and philosophy.
 
-Initial setup
+   .. caution::
+
+      .. include:: ../_includes/trial-warning.rst
+
+Initial Setup
 -------------
 
 .. note::
 
    You have to :ref:`install the CLI Tool <cli-install>` first.
 
-From within your project's directory, generate a sensible default SymfonyCloud
+From within your project's directory, generate a default SymfonyCloud
 configuration:
 
 .. code-block:: terminal
 
     $ symfony project:init
 
-Thanks to our versatile templates most of the hard work of adapting the
+Thanks to our versatile templates, most of the hard work of adapting the
 configuration to your Symfony project structure is already done
 for you in the ``.symfony.cloud.yaml`` and
 ``app/config/parameters_symfonycloud.php`` files.
@@ -35,24 +39,21 @@ for you in the ``.symfony.cloud.yaml`` and
 As for any SymfonyCloud project, you will have to edit the
 ``.symfony.cloud.yaml`` and ``.symfony/services.yaml`` files according to your
 needs. See the :doc:`Services documentation </services/intro>` for a complete
-description of currently supported service types, endpoints and associated
+description of currently supported services types, endpoints and associated
 environment variables.
 
-You will then have to tweak a bit the generated configuration. The instructions
-will mostly depend on your Symfony version.
-
-Symfony version
+Symfony Version
 ---------------
 
-The quality of your experience with SymfonyCloud will vastly depend on your
-Symfony version: before Symfony 3.2 you do not benefit from the
-`Runtime Environment Variables`_ while the `DotEnv component`_ has been
-introduced with Symfony 3.3. SymfonyCloud leverages environment variables to
-expose services credentials and to allow fast creation of new environments with
+The quality of your experience with SymfonyCloud vastly depends on your Symfony
+version: before Symfony 3.2 you do not benefit from the
+`Runtime Environment Variables`_ as the `DotEnv component`_ has been
+introduced in Symfony 3.3. SymfonyCloud leverages environment variables to
+expose service credentials and to allow fast creation of new environments with
 the same codebase. Those two features are key for a great SymfonyCloud
 experience.
 
-We highly recommend the upgrade to 3.2+ before getting started. If you cannot do
+We highly recommend to upgrade to 3.2+ before getting started. If you cannot do
 so, your SymfonyCloud configuration will remain the same but your deployments
 will take longer as your Symfony cache will need to be built each time.
 
@@ -71,12 +72,6 @@ In such configuration, Symfony cache can only be properly warmed up during the
 environment deployment. As a result the :ref`symfony-build` helper will not
 persist the cache, and :ref:`symfony-deploy` will transparently warm up the
 cache during deployment.
-
-.. tip::
-
-   In the rare occasions where your Symfony application uses a **highly** static
-   configuration and no external parameters you can try to apply the
-   `Symfony 3.2 and more`_ configuration.
 
 Another consideration is regarding environment variables: most Symfony 2 or 3
 applications are using parameters to handle configuration values such as
@@ -138,8 +133,8 @@ will read the parameters value from the environment variables.
    warm-up must be possible even when services (like a database) are not
    available.
 
-Symfony 3.2 and more
-~~~~~~~~~~~~~~~~~~~~
+Symfony 3.2 and up
+~~~~~~~~~~~~~~~~~~
 
 .. note::
 
@@ -202,7 +197,7 @@ build stage:
     .. code-block:: env
 
         # .env
-        # Only available if the DotEnv component is available and configured
+        # Only possible if the DotEnv component is available and configured
         DATABASE_HOST: 127.0.0.1
         DATABASE_PORT: 3306
         DATABASE_NAME: db_name
@@ -211,11 +206,11 @@ build stage:
 
 .. caution::
 
-   Some third-party Bundles might resolve configuration values during the cache
+   Some third-party bundles might resolve configuration values during the cache
    build, this results in inlined values in the container. This prevents the use
-   of runtime environment variables. In such case, the Bundle must be upgraded
-   or patched, or you can decide to use a static configuration if this suits
-   your needs.
+   of runtime environment variables. In such case, the bundle must be upgraded
+   or patched, or you can decide to use a static configuration if it is enough
+   for your needs.
 
 The last step is to make SymfonyCloud save and reuse the built cache during the
 build stage by uncommenting the ``mv`` command in the build hook:
@@ -260,10 +255,10 @@ You can now create a new SymfonyCloud project and deploy it:
 
     .. include:: ../_includes/trial-warning.rst
 
-Updates and migrations
-----------------------
+Migrations
+----------
 
-You want to upgrade to Symfony 4? Switch to Flex? or even move from Symfony 2.x
+You want to upgrade to Symfony 4? Switch to Flex? Or even move from Symfony 2.x
 to 3.4 and start using runtime environment variables? By using SymfonyCloud you
 can now :ref:`spin-up new environments <working-with-environments>` to quickly
 test in a production-like environment your changes and then deploy with
