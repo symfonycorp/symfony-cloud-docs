@@ -231,6 +231,13 @@ available endpoints exposed by the service.
     configuration of currently supported service types, endpoints and associated
     environment variables.
 
+.. caution::
+
+   At this time SymfonyCloud does not support circular relationships between
+   services or applications. That means you cannot add a relationship in your
+   ``.symfony.cloud.yaml`` that points to another application or service that
+   itself points back to the first application.
+
 Web
 ~~~
 
