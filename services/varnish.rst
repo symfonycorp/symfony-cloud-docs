@@ -142,21 +142,13 @@ That will map all incoming requests to the Varnish service rather than the
 application. Varnish will then, based on the VCL file, forward requests to the
 application as appropriate.
 
-Circular relationships
-----------------------
-
-At this time SymfonyCloud does not support circular relationships between
-services or applications. That means you cannot add a relationship in your
-``.symfony.cloud.yaml`` that points to the Varnish service. If you do so then
-one of the relationships will be skipped and the connection will not work. This
-limitation may be lifted in the future.
-
 Stats endpoint
 --------------
 
 The Varnish service also offers an ``http+stats`` endpoint, which provides
 access to some Varnish analysis and debugging tools. To access it, from a
-dedicated app container add the following to ``.symfony.cloud.yaml``:
+**dedicated** (see note below) app container, add the following to
+``.symfony.cloud.yaml``:
 
 .. code-block:: yaml
 
@@ -171,10 +163,15 @@ following paths to get diagnostic information:
 * ``/stats``: returns the output of ``varnishstat``
 * ``/logs``: returns a streaming response of ``varnishlog``
 
-.. note::
+.. caution::
 
-    Because of the circular relationship issue noted above this cannot be done
-    on the application that Varnish is forwarding to. It will need to be run on
-    a separate application container.
+    Because SymfonyCloud does not support circular relationships between
+    services or applications at this time, you cannot add a relationship that
+    points to the Varnish service in the ``.symfony.cloud.yaml`` of an
+    application that Varnish is forwarding to. If you do so one of the
+    relationships will be skipped and the connection will not work. **The
+    relationship needs to be defined by a separate application container.** Read
+    our :doc:`Multiple applications </cookbooks/multi-apps>` cookbook for more
+    information on how create an additional application container.
 
 .. _`Varnish`: https://en.wikipedia.org/wiki/Varnish_(software)
