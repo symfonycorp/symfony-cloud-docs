@@ -52,11 +52,14 @@ application container itself via a cron task:
                     croncape symfony env:snapshot:create --no-wait
                 fi
 
-For the command to work, `set up an authentication token <api_tokens.html>`_.
+.. caution::
+
+   For the command to work, you first need to
+   :doc:`set up an API authentication token </cookbooks/api_tokens>`.
 
 .. note::
 
-    Do not schedule more than one snapshot a day to minimize data usage.
+   Please do not schedule more than one snapshot a day to minimize data usage.
 
 Retention
 ---------

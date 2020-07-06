@@ -242,13 +242,17 @@ pro-ration for the period where the project was on a higher plan.
 Automatic snapshots and certificate renewal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. caution::
+
+   You first need to set up an :doc:`API token </cookbooks/api_tokens>` and set
+   it up in your project environment variables. Then you can configure the
+   appropriate tasks.
+
 It's **strongly** recommended that you set up automatic :doc:`snapshots
 </cookbooks/snapshots>` and automatic :doc:`certificate </cookbooks/https>`
-deployment cron tasks. You will first need to set up an :doc:`API token
-</cookbooks/api_tokens>` and set it up in your project environment variables.
-Then you can easily configure the appropriate cron tasks. The following snippet
-is generally sufficient but see the links above for more details, and please
-modify the cron schedules listed to match your use case.
+deployment cron tasks. The following snippet is generally sufficient but see the
+links above for more details, and don't forget to tweak the cron schedules
+listed to match your use case.
 
 .. code-block:: yaml
 

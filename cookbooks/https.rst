@@ -49,6 +49,10 @@ issuing the following command from your **local** environment:
 
     $ symfony redeploy
 
+.. note::
+
+   The certificate will not be renewed unless it expires in less than one month.
+
 You can also automate the redeploy via a cron task:
 
 .. code-block:: yaml
@@ -63,13 +67,12 @@ You can also automate the redeploy via a cron task:
                     croncape symfony redeploy --no-wait
                 fi
 
-For the command to work, `set up an authentication token <api_tokens.html>`_.
-
-.. note::
-
-    The certificate will not renew unless it has less than one month remaining.
-
 .. caution::
+
+   For the command to work, you first need to
+   :doc:`set up an API authentication token </cookbooks/api_tokens>`.
+
+.. tip::
 
     As the redeploy does cause a momentary pause in service, we recommend
     running during non-peak hours for your site.
