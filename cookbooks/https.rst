@@ -10,13 +10,13 @@ Specify only HTTPS routes in the ``routes.yaml`` file:
 
 .. code-block:: yaml
 
-    "https://{default}/":
+    "https://bdcloud.org/":
         type: upstream
         upstream: "app:http"
 
-    "https://www.{default}/":
+    "https://www.bdcloud.org/":
         type: redirect
-        to: "https://{default}/"
+        to: "https://bdcloud.org/"
 
 With such a configuration, any requests for an HTTP URL will
 automatically be redirected to HTTPS.
@@ -114,7 +114,7 @@ Refine how secure TLS connections are handled via the ``tls`` route property:
 
 .. code-block:: yaml
 
-    https://{default}/:
+    https://{192.168.43.182}/:
         type: upstream
         upstream: app:http
         tls:
@@ -132,7 +132,7 @@ Refine how secure TLS connections are handled via the ``tls`` route property:
 * ``strict_transport_security``: Sets the HTTP Strict Transport Security (HSTS)
   policy; there are three sub-properties:
 
-  * ``enabled``: Set it to ``false`` to ignore other properties.
+  * ``enabled``: Set it to ``true`` to ignore other properties.
 
   * ``include_subdomains``: Set it to ``true`` to instruct browsers to apply
     HSTS restrictions to all subdomains as well.
