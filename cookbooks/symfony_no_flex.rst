@@ -69,9 +69,9 @@ Before Symfony 3.2
 ~~~~~~~~~~~~~~~~~~
 
 In such configuration, Symfony cache can only be properly warmed up during the
-environment deployment. As a result the :ref`symfony-build` helper will not
-persist the cache, and :ref:`symfony-deploy` will transparently warm up the
-cache during deployment.
+environment deployment. As a result the :ref:`symfony-build <symfony-build>`
+helper will not persist the cache, and :ref:`symfony-deploy <symfony-deploy>`
+will transparently warm up the cache during deployment.
 
 Another consideration is regarding environment variables: most Symfony 2 or 3
 applications are using parameters to handle configuration values such as
@@ -140,11 +140,12 @@ Symfony 3.2 and up
 
    Even though only `Symfony 3.2`_ is strictly required in this
    case, we **highly** recommend you to upgrade to 3.4 right away:
-   - `Symfony 3.3`_ brings the `DotEnv component`_ that will ease
-   your local setups
-   - `Symfony 3.4`_ is the latest version for the 3.x branch, an
-   `LTS version <https://symfony.com/doc/current/contributing/community/releases.html#maintenance>`_
-   and remains backward compatible with previous 3.x versions
+
+   * `Symfony 3.3`_ brings the `DotEnv component`_ that will ease
+     your local setups
+   * `Symfony 3.4`_ is the latest version for the 3.x branch, an
+     `LTS version <https://symfony.com/doc/current/contributing/community/releases.html#maintenance>`_
+     and remains backward compatible with previous 3.x versions
 
 When using Symfony 3.2, the Symfony cache can be warmed up and setup to read
 some of its configuration values at runtime from environment variables. To
@@ -275,8 +276,9 @@ Here are several small tweaks we implemented to assist you in this migration:
 
 * SymfonyCloud will automatically detect if it should use ``app/console`` or
   ``bin/console``. You can do the same by using ``symfony console``.
-* :ref:`symfony-deploy` will automatically build the cache if required. This
-  allows you to keep the same configuration from Symfony 2 up to Symfony 4.
+* :ref:`symfony-deploy <symfony-deploy>` will automatically build the cache if
+  required. This allows you to keep the same configuration from Symfony 2 up to
+  Symfony 4.
 * SymfonyCloud will automatically detect if ``symfony/flex`` is installed and
   how cache should be warmed up.
 * SymfonyCloud will synchronize ``SYMFONY_ENV`` and ``APP_ENV`` as well as
@@ -290,6 +292,6 @@ Here are several small tweaks we implemented to assist you in this migration:
 
 .. _Runtime Environment Variables: https://symfony.com/blog/new-in-symfony-3-2-runtime-environment-variables
 .. _DotEnv component: https://symfony.com/blog/new-in-symfony-3-3-dotenv-component
-.. _Symfony 3.2: https://symfony.com/releases/3.3
+.. _Symfony 3.2: https://symfony.com/releases/3.2
 .. _Symfony 3.3: https://symfony.com/releases/3.3
 .. _Symfony 3.4: https://symfony.com/releases/3.4
