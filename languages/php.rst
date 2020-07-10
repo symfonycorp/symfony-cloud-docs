@@ -128,7 +128,7 @@ gmp              *    *    *    *    *    *    *    *
 http             *    *                        *    *
 iconv                           *    *    *    *    *
 igbinary                        *    *    *    *    *
-imagick          *    *    *    *    *    *    *
+imagick          *    *    *    *    *    *    *    *
 imap             *    *    *    *    *    *    *    *
 interbase        *    *    *    *    *    *    *    *
 intl             *    *    *    *    *    *    *    *
