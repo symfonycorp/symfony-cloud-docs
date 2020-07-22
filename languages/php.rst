@@ -33,6 +33,9 @@ PHP extensions can be enabled/disabled under the ``runtime.extensions`` and
         disabled_extensions:
             - sqlite3
 
+To install specific versions or build an extension not available on PECL or on
+SymfonyCloud, use the :ref:`php-ext-install <php-ext-install>` script instead.
+
 Default PHP Extensions
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -218,7 +221,10 @@ zip                             *    *    *    *    *
 Custom PHP Extensions
 ~~~~~~~~~~~~~~~~~~~~~
 
-You can also use a not-listed PHP extension by following these steps:
+To install custom PHP extensions not available on PECL or on SymfonyCloud, use
+the :ref:`php-ext-install <php-ext-install>` script.
+
+If you already have a pre-compiled ``.so`` file, follow these steps instead:
 
 1. Download the ``.so`` file for the extension as part of your build hook using
    ``curl`` or similar.
