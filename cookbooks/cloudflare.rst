@@ -70,6 +70,12 @@ Finally, you can turn on the "Full (strict) SSL" option.
 Authenticated Origin Pulls
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. caution::
+
+   This configuration is not compatible with development environments. You will
+   have to apply this change only to the main branch or disable it for each new
+   environment created.
+
 By default, Cloudflare sits between end-users and a project on SymfonyCloud, but
 SymfonyCloud stills allows direct requests to the project (by-passing
 Cloudflare's features and protection). This is why we recommend you to enable
