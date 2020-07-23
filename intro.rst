@@ -23,6 +23,8 @@ copy of their data (database entries, search index, user files, ...).
 It really is "what would my site look like if I merge these changes to
 production?"
 
+.. _basics:
+
 The Basics
 ----------
 
