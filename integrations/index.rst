@@ -53,6 +53,7 @@ Available integrations
     bitbucket
     github
     gitlab
+    hipchat
     webhooks
 
 Add a new integration
