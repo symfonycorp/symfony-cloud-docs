@@ -55,6 +55,7 @@ Available integrations
     github
     gitlab
     hipchat
+    notifications
     webhooks
 
 Add a new integration
