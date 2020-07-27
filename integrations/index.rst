@@ -50,6 +50,7 @@ Available integrations
     :maxdepth: 1
     :titlesonly:
 
+    bitbucket
     github
     gitlab
     webhooks
