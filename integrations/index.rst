@@ -51,6 +51,7 @@ Available integrations
     :titlesonly:
 
     github
+    gitlab
     webhooks
 
 Add a new integration
