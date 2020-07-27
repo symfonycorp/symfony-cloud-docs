@@ -51,6 +51,7 @@ Available integrations
     :titlesonly:
 
     bitbucket
+    blackfire
     github
     gitlab
     hipchat
