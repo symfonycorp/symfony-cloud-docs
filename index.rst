@@ -13,3 +13,4 @@ SymfonyCloud Documentation
     cookbooks/index
     languages/index
     troubleshooting
+    faq
