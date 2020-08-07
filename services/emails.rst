@@ -22,7 +22,7 @@ Environment Variables
 The configuration is exposed via the following environment variables:
 
 * ``MAILER_ENABLED``: 1 if outgoing emails are enabled, 0 otherwise
-* ``MAILER_URL``: The Symfony-compatible mailer URL
+* ``MAILER_DSN``/``MAILER_URL``: The Symfony-compatible mailer URL
 * ``MAILER_HOST``: The SMTP server host
 * ``MAILER_PORT``: The SMTP server port
 * ``MAILER_TRANSPORT``: The SMTP transport mode (``smtp``)
@@ -40,9 +40,15 @@ On Symfony projects using Flex, install Symfony Mailer:
     $ composer require mailer
 
 No further configuration is needed as the default configuration knows how to
-use the value of ``MAILER_URL`` automatically.
+use the value of ``MAILER_DSN`` automatically.
 
-For other applications, use ``MAILER_URL`` with Symfony Mailer or use the
+.. tip::
+
+   ``MAILER_URL`` is also provided for backward-compatiblity with
+   SwiftMailerBundle recipes
+
+
+For other applications, use ``MAILER_DSN`` with Symfony Mailer or use the
 ``MAILER_*`` environment variables to configure your framework of choice.
 
 .. caution::
