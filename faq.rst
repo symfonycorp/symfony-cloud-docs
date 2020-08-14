@@ -20,3 +20,13 @@ deploy``.
 
 The space used to store your source code, your application container images, and
 the temporary files (``/tmp``) does not account in the storage quota.
+
+How much storage is available in ``/tmp``?
+------------------------------------------
+
+Each container comes with 4GB of temporary storage available at ``/tmp``.
+
+How to rename a project?
+------------------------
+
+You can rename your project using ``symfony project:rename``.
