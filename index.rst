@@ -14,3 +14,4 @@ SymfonyCloud Documentation
     languages/index
     troubleshooting
     faq
+    billing
