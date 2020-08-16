@@ -11,6 +11,7 @@ SymfonyCloud Documentation
     routes
     services/intro
     cookbooks/index
+    integrations/index
     languages/index
     troubleshooting
     faq
