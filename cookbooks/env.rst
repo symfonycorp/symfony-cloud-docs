@@ -142,6 +142,8 @@ the value should be different for each application.
 Application-provided variables are available **at both** build time **and**
 runtime.
 
+.. _symfonycloud-environment-variables:
+
 SymfonyCloud Environment Variables
 ----------------------------------
 
