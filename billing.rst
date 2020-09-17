@@ -118,8 +118,33 @@ immediately or automatically at the end of your current billing period.
 How can I change my billing details?
 ------------------------------------
 
-At the moment it is not possible to edit your billing details yourself. If you
-need to change them, please file a ticket at `SymfonyCloud Support`_.
+At the moment it is not possible to edit your billing details (name, address,
+country, etc) yourself. If you need to change them, please file a ticket at
+`SymfonyCloud Support`_.
+
+You can change your payment method information at any time using ``symfony
+project:billing:update-card``.
+
+What happens in case of payment failure?
+----------------------------------------
+
+Because SymfonyCloud hosts your (paid) projects and holds potentially important
+data, we do not cancel projects right away on payment failures.
+
+In the eventuality that your project experiences a payment failure, we retry
+charging your payment method several times over 10 days with an interval of 1 to
+7 days between each attempt and notify you of the failure each time. If fixing
+the failure requires you to change your payment method information please use
+the ``symfony project:billing:update-card`` command.
+
+If payment is still failed after several tries, you project will be
+automatically suspended. You can then manually retry payment and unsuspend your
+project by using the  ``symfony project:billing:unsuspend`` command.
+
+If payment is not recovered by the end of the latest billing period, your
+suscription will be cancelled and your project will be automatically deleted
+about 30 days after this cancellation. If you wish to recover your project
+during this grace period please contact `SymfonyCloud Support`_.
 
 How can I change a project owner?
 ---------------------------------
