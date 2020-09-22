@@ -69,7 +69,7 @@ When successful, the previous command outputs the configuration of the
 integration.
 
 #. Copy the ``Hook URL`` shown in the summary table.
-#. Go to your GitLab repository and click ``Settings`` then ``Integrations``.
+#. Go to your GitLab repository and click ``Settings`` then ``Webhooks``.
 #. Paste the ``Hook URL``.
 #. On the Triggers section choose ``Push events``, ``Tag push events`` and
    ``Merge Request events``.
