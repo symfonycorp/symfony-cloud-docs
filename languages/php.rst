@@ -276,6 +276,8 @@ start command **must run in the foreground**.
     process (such as ReactPHP or Amp). If you need both they will have to run in
     separate containers.
 
+.. _php_size:
+
 PHP Worker Sizing Hints
 -----------------------
 
