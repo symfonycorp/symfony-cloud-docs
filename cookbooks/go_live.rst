@@ -238,7 +238,7 @@ pro-ration for the period where the project was on a higher plan.
 To ensure maximum performance, be sure to read our documentation about
 :ref:`service sizing <service_size>`, :ref:`container sizing <config-size>`, and
 :ref:`PHP sizing <php_size>`. Finally, you can leverage features from services
-such as :doc:`Blackfire <../integrations/blackfire>`.
+like :doc:`Blackfire <../integrations/blackfire>`.
 
 Automatic snapshots and certificate renewal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
