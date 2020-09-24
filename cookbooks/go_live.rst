@@ -1,10 +1,6 @@
 Going Live
 ==========
 
-.. contents::
-    :depth: 1
-    :local:
-
 .. tip::
 
     The order of operations is not really important, but if you are
@@ -238,6 +234,11 @@ project can be scaled up in a matter of seconds with ``symfony project:scale``.
 Once the peak of traffic is done, scale down with ``symfony project:scale
 --down``. At the end of the billing period, the project invoice will include a
 pro-ration for the period where the project was on a higher plan.
+
+To ensure maximum performance, be sure to read our documentation about
+:ref:`service sizing <service_size>`, :ref:`container sizing <config-size>`, and
+:ref:`PHP sizing <php_size>`. Finally, you can leverage features from services
+like :doc:`Blackfire <../integrations/blackfire>`.
 
 Automatic snapshots and certificate renewal
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

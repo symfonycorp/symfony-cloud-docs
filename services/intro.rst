@@ -89,6 +89,8 @@ generate an error if present.
 
     Currently we do not support downsizing the persistent disk of a service.
 
+.. _service_size:
+
 Size
 ~~~~
 
