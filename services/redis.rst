@@ -25,9 +25,9 @@ To use it in your application, add it to ``.symfony/services.yaml``:
 .. code-block:: yaml
 
     myredis:
-        # supported versions: 3.2, 4.0, 5.0
+        # supported versions: 3.2, 4.0, 5.0, 6.0
         # 2.8 and 3.0 are also available but not maintained upstream
-        type: redis:5.0
+        type: redis:6.0
 
 Data in an Ephemeral Redis instance is stored only in memory, and thus requires
 no disk space. When the service hits its memory limit it will automatically
@@ -44,9 +44,9 @@ To use it in your application, add it to ``.symfony/services.yaml``:
 .. code-block:: yaml
 
     myredis:
-        # supported versions: 3.2, 4.0, 5.0
+        # supported versions: 3.2, 4.0, 5.0, 6.0
         # 2.8 and 3.0 are also available but not maintained upstream
-        type: redis-persistent:5.0
+        type: redis-persistent:6.0
         disk: 1024
 
 The ``disk`` key is required for redis-persistent to configure how much disk
