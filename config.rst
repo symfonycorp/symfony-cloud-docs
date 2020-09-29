@@ -574,6 +574,7 @@ When installing PECL PHP extensions, you can configure them directly as
 
 .. code-block:: yaml
 
+    # .symfony.cloud.yaml
     variables:
         php-ext:
             redis: 5.3.1
