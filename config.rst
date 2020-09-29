@@ -576,7 +576,7 @@ When installing PECL PHP extensions, you can configure them directly as
 
     variables:
         php-ext:
-            redis:5.3.1
+            redis: 5.3.1
 
 .. note::
 
