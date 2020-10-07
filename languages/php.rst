@@ -339,7 +339,6 @@ In the fifth column, you'll see the peak memory usage that occurred while each
 request was handled. A good way to determine an optimal request memory is with
 the following command:
 
-.. class:: command-linux
 .. code-block:: terminal
 
     $ tail -n5000 /var/log/php.access.log | awk '{print $6}' | sort -n | uniq -c
@@ -348,7 +347,6 @@ This will print out a table of how many requests used how much memory, in KB,
 for the last 5,000 requests that reached PHP-FPM (increase that number if your
 site has lot of traffic). As an example, consider the following output:
 
-.. class:: command-linux
 .. code-block:: terminal
 
     4800 2048
