@@ -108,33 +108,12 @@ Defines the build flavor; use ``none`` for PHP projects.
 Size
 ~~~~
 
-By default, SymfonyCloud allocates CPU and memory resources to each container
-automatically. Some services are optimized for high CPU load, some for high
-memory load. By default, SymfonyCloud tries to allocate the largest "fair" size
-possible to all services, given the available resources on the plan. That is not
-always optimal, however, and you can customize that behavior on any application
-container or on any service.
+Tweaks the container size. Supported values for the size key are ``AUTO`` (the
+default), ``XS``, ``S``, ``M``, ``L``, ``XL``, ``2XL`` and ``4XL``.
 
-Legal values for the size key are ``AUTO`` (the default), ``S``, ``M``, ``L``,
-``XL``, ``2XL`` and ``4XL``.
-
-.. note::
-
-    Note that in a development environment this value is ignored and always set
-    to ``S``. It will only take effect in a production deployment (a master
-    branch with an associated domain).
-
-.. caution::
-
-    If the total resources requested by all apps and services is larger than
-    what the plan size allows then a production deployment will fail with an
-    error.
-
-.. tip::
-
-   Application container resources allocation can also be tweaked - unlocking
-   a smaller ``XS`` size - using flexible resources allocation, please refer to
-   its :doc:`documentation <cookbooks/flexible_resources>` for more information.
+Read the documentation about
+:doc:`resources allocations <cookbooks/resources_allocation>` for more
+details about the impact of this parameter.
 
 .. _config-disk:
 
