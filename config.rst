@@ -130,6 +130,12 @@ Legal values for the size key are ``AUTO`` (the default), ``S``, ``M``, ``L``,
     what the plan size allows then a production deployment will fail with an
     error.
 
+.. tip::
+
+   Application container resources allocation can also be tweaked - unlocking
+   a smaller ``XS`` size - using flexible resources allocation, please refer to
+   its :doc:`documentation <cookbooks/flexible_resources>` for more information.
+
 .. _config-disk:
 
 Disk
