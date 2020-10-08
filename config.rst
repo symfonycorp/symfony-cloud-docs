@@ -116,7 +116,7 @@ always optimal, however, and you can customize that behavior on any application
 container or on any service.
 
 Legal values for the size key are ``AUTO`` (the default), ``S``, ``M``, ``L``,
-and ``XL``.
+``XL``, ``2XL`` and ``4XL``.
 
 .. note::
 
