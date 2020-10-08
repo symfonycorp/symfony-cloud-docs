@@ -14,12 +14,17 @@ To use it in your application, add it to ``.symfony/services.yaml``:
         type: rabbitmq:3.7
         disk: 1500
 
-And wire it in ``.symfony.cloud.yaml``:
+And wire it in ``.symfony.cloud.yaml`` (don't forget to enable the
+``amqp`` PHP extension):
 
 .. code-block:: yaml
 
     relationships:
         rabbitmq: "myrabbitmq:rabbitmq"
+
+    runtime:
+        extensions:
+            - amqp
 
 The configuration is exposed via the following environment variables (where
 ``RABBITMQ`` is the upper-cased version of the key defined in the relationship
