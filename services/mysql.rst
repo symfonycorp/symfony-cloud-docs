@@ -15,13 +15,18 @@ To use it in your application, add it to your ``.symfony/services.yaml``:
         type: mysql:10.4
         disk: 1024
 
-And wire it in ``.symfony.cloud.yaml``:
+And wire it in ``.symfony.cloud.yaml`` (don't forget to enable the
+``pdo_mysql`` PHP extension):
 
 .. code-block:: yaml
 
     # .symfony.cloud.yaml
     relationships:
         database: "mydatabase:mysql"
+
+    runtime:
+        extensions:
+            - pdo_mysql
 
 Oracle's `MySQL`_ is also available using ``oracle-mysql``:
 

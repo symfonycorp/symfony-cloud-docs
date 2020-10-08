@@ -17,14 +17,14 @@ To use it in your application, add it to ``.symfony/services.yaml``:
         # supported versions: 1.4, 1.5, 1.6
         type: memcached:1.6
 
-And wire it in ``.symfony.cloud.yaml``:
+And wire it in ``.symfony.cloud.yaml`` (don't forget to enable the
+``memcached`` PHP extension):
 
 .. code-block:: yaml
 
     relationships:
         cache: "memcached:memcached"
 
-    # needed to install the PHP extension
     runtime:
         extensions:
             - memcached

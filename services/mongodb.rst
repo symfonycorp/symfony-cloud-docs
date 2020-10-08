@@ -12,12 +12,17 @@ To use it in your application, add it to ``.symfony/services.yaml``:
         type: mongodb:3.0
         disk: 1024
 
-And wire it in ``.symfony.cloud.yaml``:
+And wire it in ``.symfony.cloud.yaml``  (don't forget to enable the
+``mongodb`` PHP extension)::
 
 .. code-block:: yaml
 
     relationships:
         mongodb: "mydatabase:mongodb"
+
+    runtime:
+        extensions:
+            - mongodb
 
 .. note::
 
