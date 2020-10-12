@@ -57,6 +57,7 @@ Symfony application using Flex:
             (>&2 symfony-build)
         deploy: |
             set -x -e
+
             (>&2 symfony-deploy)
 
 .. note::
@@ -482,8 +483,8 @@ tools:
 - `Symfony CLI <https://symfony.com/download>`_
 - `Composer <https://getcomposer.org/download/>`_
 
-Additionally, it creates some helpers: symfony-build_, symfony-deploy_,
-symfony-database-migrate_, php-ext-install_, and yarn-install_.
+Additionally, it creates some helpers: symfony-build_, symfony-start_,
+symfony-deploy_, symfony-database-migrate_, php-ext-install_, and yarn-install_.
 
 .. _symfony-build:
 
@@ -492,7 +493,7 @@ symfony-database-migrate_, php-ext-install_, and yarn-install_.
 
 **symfony-build** is our recipe to build a Symfony application the best way
 possible. It removes the development frontend, install the application
-dependencies using Composer (and Yarn, by running `yarn-install`_), optimize the
+dependencies using Composer (and Yarn, by running yarn-install_), optimize the
 autoloader, build Symfony cache if possible and finally build the production
 assets using Encore.
 
@@ -518,9 +519,19 @@ automation during the symfony-build_ run.
 ....................
 
 **symfony-deploy** is to be used each time a Symfony application is deployed.
-Its purpose is to make Symfony cache used by the application if built by
-symfony-build_, built it otherwise. When ran from the web container, it
-also runs the symfony-database-migrate_ helper.
+Its purpose is to run the symfony-start_ helper and when executed from the web
+container, restart FPM and run the symfony-database-migrate_ helper.
+
+.. _symfony-start:
+
+(>&2 symfony-start)
+....................
+
+**symfony-start** is to be used each time a Symfony application starts in a new
+container. Its purpose is to move the Symfony cache built by symfony-build_ to
+be used by the application or built the cache otherwise. It is automatically
+executed by symfony-deploy_ and SymfonyCloud automatically runs it before
+starting (or restarting) workers.
 
 .. _symfony-database-migrate:
 
