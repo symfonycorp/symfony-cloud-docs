@@ -214,7 +214,7 @@ zip                             *    *    *    *    *
     you SSH into your environment: ``ls /etc/php/*/mods-available`` (for PHP 5
     run ``ls /etc/php5/mods-available``).
 
-.. warning::
+.. caution::
 
     .. include:: ../_includes/php-redis-warning.rst
 

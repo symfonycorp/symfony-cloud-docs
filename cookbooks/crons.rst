@@ -60,7 +60,7 @@ command:
     their nightly tasks at the same time. Your crons will not run exactly at the
     time that you specify, but will be delayed by 0-300 seconds.
 
-.. warning::
+.. caution::
 
     Cron runs are executed using the dash shell, not the bash shell used by
     regular SSH sessions. In most cases that makes no differences but may
