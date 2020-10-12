@@ -94,7 +94,12 @@ generate an error if present.
 Size
 ~~~~
 
-This attribute has the same effect as for :ref:`application containers <config-size>`.
+Tweaks the service container size. Supported values for the size key are
+``AUTO`` (the default), ``S``, ``M``, ``L``, ``XL``, ``2XL`` and ``4XL``.
+
+Read the documentation about
+:doc:`resources allocations <../cookbooks/resources_allocation>` for more
+details about the impact of this parameter.
 
 .. tip::
 

@@ -50,6 +50,13 @@ specified by the ``start`` key terminates it will be restarted automatically.
     possible. Every data sharing needs to be done using :doc:`services
     </services/intro>`.
 
+.. tip::
+
+   While worker and application containers share the same ``size`` by default,
+   they usually benefit from being tweaked separately. Read the documentation
+   about :doc:`resources allocations <resources_allocation>` for more
+   details about using it.
+
 Accessing a worker container
 ----------------------------
 

@@ -24,3 +24,4 @@ Cookbooks
     robots
     cloudflare
     symfony_no_flex
+    resources_allocation
