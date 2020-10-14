@@ -162,6 +162,23 @@ prefixed with ``SYMFONY_*``:
 * ``SYMFONY_PROJECT_ENTROPY``: A random value created when the project is
   first created, which is then stable throughout the project’s life.
 
+The following variables exist **only** during the build. If used at runtime they
+will evaluate to an empty string like any other unset variable:
+
+.. _build_cache_dir:
+
+* ``SYMFONY_CACHE_DIR``: The absolute path to the build cache directory
+  available during the :ref:`build hook <build-hook>` execution.
+
+  This directory is persisted between builds, but is **not** deployed. It’s a
+  good place to store build artifacts, such as downloaded files, that can be
+  reused between builds.
+
+  .. note::
+
+     This directory is shared by **all** builds on **all** branches, make sure
+     your build hook accounts for that.
+
 The following variables exist **only** at runtime. If used in a build hook they
 will evaluate to an empty string like any other unset variable:
 

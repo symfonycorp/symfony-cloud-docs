@@ -397,16 +397,26 @@ Three hooks are available:
 * First, the **build** script runs when SymfonyCloud packages the application.
   At this time, the application source code is checked out, global
   `dependencies`_ are installed and the filesystem can be written at will but no
-  :doc:`services </services/intro>` are available. This is the best time to run
-  heavy-duty tasks that can be performed offline such as assets build or Symfony
-  container compilation.
+  :doc:`services </services/intro>` are available.
 
   .. caution::
 
-    The *build* step creates a container image that is tied to the sha1 of
-    the Git tree being built. This image is reused for all deployments and all
+    The *build* step creates a container image that is tied to the Git tree
+    content being built. This image is reused for all deployments and all
     environments, including production. This means that the build step **must**
     be environment agnostic.
+
+  This is the best time to run heavy-duty tasks that can be performed offline
+  such as assets build or Symfony container compilation. A persisted :ref:`build
+  cache directory <build_cache_dir>` is available to you for storing reusable
+  artifacts. ``/tmp`` is also writable but its content is wiped after the build.
+
+  .. note::
+
+    Build environments (the application plus the cache directory) are limited to
+    4 GB during the build step - independently of the mounted disk size that is
+    allocated for deployment. If you exceed this limit you will receive a ``No
+    space left on device error``.
 
 .. _deploy-hook:
 
