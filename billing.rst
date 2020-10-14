@@ -74,7 +74,7 @@ going live. You do not have dedicated resources and can not attach production
 domains to your main environment.
 
 When a project is attached to a production plan, the Main environment runs on
-different hosts with dedicated ressources and can serve traffic to custom
+different hosts with dedicated resources and can serve traffic to custom
 production domain names.
 
 How do I change my project plan?
