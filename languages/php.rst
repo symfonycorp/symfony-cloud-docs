@@ -144,7 +144,7 @@ mcrypt           *    *    *    *    *
 memcache         *    *    *
 memcached        *    *    *    *    *    *    *    *
 mongo            *    *    *
-mongodb                         *    *    *    *
+mongodb                         *    *    *    *    *
 msgpack                    *    *    *    *    *    *
 mssql            *    *    *
 mysql            *    *    *
@@ -173,7 +173,7 @@ pthreads                             *    *
 raphf                      *                   *    *
 readline         *    *    *    *    *    *    *    *
 recode           *    *    *    *    *    *    *
-redis            *    *    *    *    *    *    *
+redis            *    *    *    *    *    *    *    *
 shmop                           *    *    *    *    *
 simplexml                       *    *    *    *    *
 snmp             *    *    *    *    *    *    *    *
