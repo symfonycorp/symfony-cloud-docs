@@ -30,6 +30,7 @@ The configuration is exposed via the following environment variables (where
 ``ELASTICSEARCH`` is the upper-cased version of the key defined in the
 relationship above):
 
+* ``ELASTICSEARCH_URL``: The full URL of the Elasticsearch service
 * ``ELASTICSEARCH_HOST``: The Elasticsearch host
 * ``ELASTICSEARCH_PORT``: The Elasticsearch port
 * ``ELASTICSEARCH_SCHEME``: The Elasticsearch protocol scheme (``http`` or ``https``)
