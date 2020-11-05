@@ -114,7 +114,7 @@ It might happen that an application build breaks because of an environment
 variable that does not exist:
 
 .. We use this on purpose to **not** include the line numbers
-.. literalinclude:: missing-env-variable-logs.txt
+.. literalinclude:: ../_includes/missing-env-variable-logs.txt
    :language: text
 
 This usually happens with applications migrated from Symfony pre 3.2 to 3.2 and
