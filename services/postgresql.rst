@@ -90,7 +90,7 @@ Importing Data
 --------------
 
 Export your database in an SQL file making sure that the exported file contains
-objects without ownership and using `IF EXISTS` clauses. You can use the
+objects without ownership and using ``IF EXISTS`` clauses. You can use the
 following parameters:
 
 .. code-block:: terminal
