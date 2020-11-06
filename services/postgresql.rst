@@ -89,8 +89,15 @@ You can also execute commands directly on the server via the ``sql`` command:
 Importing Data
 --------------
 
-Export your database in an SQL file or in a compressed file and import it via
-the following command:
+Export your database in an SQL file making sure that the exported file contains
+objects without ownership and using ``IF EXISTS`` clauses. You can use the
+following parameters:
+
+.. code-block:: terminal
+
+   $ pg_dump --no-owner --clean --if-exists > database.sql
+
+Then import it via the following command:
 
 .. code-block:: terminal
 
