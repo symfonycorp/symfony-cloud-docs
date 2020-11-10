@@ -143,8 +143,8 @@ configurable. Two properties can be adjusted:
 .. code-block:: yaml
 
    resources:
-       base_memory: 64 #default and minimum
-       memory_ratio: 256 #defautl, minimum: 128
+       base_memory: 64   # default and minimum
+       memory_ratio: 256 # default, minimum: 128
 
 ``base_memory`` represents a fixed amount of memory (in megabytes) allocated to
 the container. ``memory_ratio`` is an amount of memory allocated per CPU share.
