@@ -173,3 +173,25 @@ sized container, while ``main`` will scale freely.
    The primary use case for this configuration is defining multiple applications
    with different configurations for the same source code, or when the source
    code is downloaded during the build phase.
+
+You might also want to deploy the exact same application multiple times with
+just some different configuration. YAML anchors might come in handy here as
+it prevents repetition:
+
+.. code-block:: yaml
+
+    # .symfony/applications.yaml
+    -   &main
+        name: main
+        type: "php:7.4"
+        web:
+            locations:
+                "/":
+                    root: "web"
+                    passthru: "/index.php"
+
+    -   <<: *main
+        name: second
+        
+    -   <<: *main
+        name: third
