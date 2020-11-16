@@ -413,6 +413,31 @@ Settings defined as environment variables have precedence over the ones defined
 in ``.symfony.cloud.yaml``, which has precedence over the ones defined in
 ``php.ini``.
 
+.. caution::
+
+   There's no limit on what you can define in your PHP configuration, but many
+   settings can break your application. This is a feature for advanced users.
+
+Default ``php.ini`` values
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: ini
+
+   ; php.ini
+   max_execution_time=300
+   max_input_time=60
+   memory_limit=128M
+   post_max_size=64M
+   upload_max_filesize=64M
+   max_file_uploads=20
+   max_input_vars=3000
+   opcache.memory_consumption=64
+   opcache.validate_timestamps=On
+   variables_order="EGPCS"
+   display_errors=On
+   zend.assertions=-1
+   session.save_path=/tmp/sessions
+
 Error Handling
 ~~~~~~~~~~~~~~
 
