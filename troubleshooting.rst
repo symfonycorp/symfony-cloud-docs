@@ -279,7 +279,7 @@ I want to rename the default (``master``) branch
 
 Being able to rename the default branch on SymfonyCloud has many technical
 implications on the infrastructure that makes impossible for us to support this
-use case it at the moment. Work is currently being done to support this in the
+use case at the moment. Work is currently in progress to support this in the
 future.
 
 In the meantime, one can work with another name locally by using the following
