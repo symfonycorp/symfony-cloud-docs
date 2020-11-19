@@ -165,6 +165,12 @@ First, you need to know that the ``master`` branch always represents the
 **production** environment. Any other branch is for developing new features,
 fixing bugs, or updating the infrastructure.
 
+.. note::
+
+   At the moment, the production branch can only be named ``master``. Please
+   read about :ref:`how to make it work for you <rename-master>` if you want to
+   use another name on your project.
+
 Let's create a new environment (a Git branch) to make some changes, without
 impacting production:
 

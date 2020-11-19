@@ -271,3 +271,33 @@ generic 404 error. To fix this, you will have to `create your first Symfony page
 
 If you already created a custom page, check that all your files are commited,
 that you ran ``symfony deploy`` and it succeeded.
+
+.. _rename-master:
+
+I want to rename the default (``master``) branch
+------------------------------------------------
+
+Being able to rename the default branch on SymfonyCloud has many technical
+implications on the infrastructure that makes impossible for us to support this
+use case at the moment. Work is currently in progress to support this in the
+future.
+
+In the meantime, one can work with another name locally by using the following
+procedure (we will assume the default Git branch is named ``main``):
+
+.. code-block:: terminal
+
+   $ git checkout main
+   $ symfony env:link master
+
+.. caution::
+
+   This technic is not compatible with :doc:`../integrations/index` such as
+   GitHub or Gitlab as branch names are directly mapped to environment names.
+
+From now on, every SymfonyCloud operations made while ``main`` is the current
+Git branch will transparently apply to the SymfonyCloud ``master`` environment.
+Please note that on SymfonyCloud, the ``master`` word will continue to be used
+(``SYMFONY_ENVIRONMENT``, activity logs, non production URLs, etc...) and if you
+use the ``SYMFONY_ENVIRONMENT`` or the ``--env`` flag locally, they need to use
+the ``master`` value as well.
