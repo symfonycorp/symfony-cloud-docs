@@ -95,7 +95,7 @@ that applications always output their log to ``stderr``.
                buffer:
                    type: buffer
 
-   **If you log depreciations, don’t forget to log them on** ``stderr`` **as
+   **If you log deprecations, don’t forget to log them on** ``stderr`` **as
    well.**
 
 .. tip::
