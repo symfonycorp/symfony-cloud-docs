@@ -222,8 +222,9 @@ last resort. You can get SymfonyCloud public IPs via
 5. Bonuses
 ----------
 
-The following steps are not required but good practices when going live with a
-SymfonyCloud project.
+The following steps are not strictly required but good practices when going live
+with a SymfonyCloud project. **We highly recommend you to read this section now
+so that you are aware of them (even if you decide to apply them later on).**
 
 Scaling
 ~~~~~~~
@@ -318,3 +319,31 @@ CDN
 While not required nor integrated, you can set up a CDN in front of your
 project. CDNs let you cache public pages and assets at the edge making your
 websites load faster.
+
+Logging
+~~~~~~~
+
+As many other Cloud providers or modern orchestration systems, SymfonyCloud
+recommends logging on ``stderr``. Doing so allows SymfonyCloud to take care for
+you of where and how your logs are stored (read our doc about :doc:`logs` for
+more information).
+
+For Symfony, this is the default behavior of the Kernel since the 3.4 version,
+but for developers convenience, for historical reasons, and probably
+practicability on dedicated servers, Monolog default recipe still uses a `file
+to store logs
+<https://github.com/symfony/recipes/blob/master/symfony/monolog-bundle/3.3/config/packages/prod/monolog.yaml>`_
+(``%kernel.logs_dir%/%kernel.environment%.log``). We recommend you to update
+your Monolog configuration to :ref:`match our recommendations
+<monolog-configuration-stderr>` to prevent your persistent disk to get full.
+
+By writing your logs to ``stderr``, they will end up in the
+:ref:`/var/log/app.log <app-log>` file "managed" by SymfonyCloud: it is
+automatically trimmed and stored in a local and very fast disk instead of a
+slower network disk. It might also be less expensive as you don't use persistent
+disk capacity with ephemeral logs.
+
+.. tip::
+
+   If you previously logged in ``var/log``, don't forget to clean your previous
+   logs files after the migration in order to reclaim the disk space.
