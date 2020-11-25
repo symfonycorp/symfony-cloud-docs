@@ -167,17 +167,23 @@ will evaluate to an empty string like any other unset variable:
 
 .. _build_cache_dir:
 
-* ``SYMFONY_CACHE_DIR``: The absolute path to the build cache directory
-  available during the :ref:`build hook <build-hook>` execution.
+* ``SYMFONY_CACHE_DIR``: The absolute path to a subdirectory of the build cache
+  directory available during the :ref:`build hook <build-hook>` execution. This
+  subdirectory is reserved to your own use.
 
-  This directory is persisted between builds, but is **not** deployed. It’s a
-  good place to store build artifacts, such as downloaded files, that can be
-  reused between builds.
+  The build cache directory is persisted between builds, but is **not**
+  deployed. It’s a good place to store build artifacts, such as downloaded
+  files, that can be reused between builds.
 
   .. note::
 
      This directory is shared by **all** builds on **all** branches, make sure
      your build hook accounts for that.
+
+  .. tip::
+
+     If you need to clear the build cache directory, you can use the
+     ``--clear-build-cache`` flag on the ``symfony deploy`` command.
 
 The following variables exist **only** at runtime. If used in a build hook they
 will evaluate to an empty string like any other unset variable:

@@ -413,10 +413,12 @@ Three hooks are available:
 
   .. note::
 
-    Build environments (the application plus the cache directory) are limited to
-    4 GB during the build step - independently of the mounted disk size that is
-    allocated for deployment. If you exceed this limit you will receive a ``No
-    space left on device error``.
+    Build environments (the application plus the build cache directory - not
+    limited to the ``app`` subdirectory) are limited to 4 GB during the build
+    step - independently of the mounted disk size that is allocated for
+    deployment. If you exceed this limit you will receive a ``No space left on
+    device error``. You can clear the build cache directory by using the
+    ``--clear-build-cache`` flag available on the ``symfony deploy`` command.
 
 .. _deploy-hook:
 
