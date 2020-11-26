@@ -8,14 +8,14 @@ To use it in your application, add it to ``.symfony/services.yaml``:
 .. code-block:: yaml
 
     mydatabase:
-        # supported versions: 9.6, 10, 11, 12
+        # supported versions: 9.6, 10, 11, 12, 13
         # 9.3 is also available but not maintained upstream
-        type: postgresql:12
+        type: postgresql:13
         disk: 1024
 
 .. caution::
 
-   Upgrading to PostgreSQL 12 using the ``postgis`` extension is currently not
+   Upgrading to PostgreSQL 12 or 13 using the ``postgis`` extension is currently not
    supported. Attempting to upgrade with this extension enabled will result in
    a failed deployment that will require support intervention to fix.
 
