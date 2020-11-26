@@ -8,7 +8,7 @@ property to ``php`` and select the PHP version to use:
 
     # .symfony.cloud.yaml
 
-    # supported versions: 7.3, 7.4
+    # supported versions: 7.3, 7.4 8.0
     # security-fix only versions: 7.2
     # deprecated versions: 5.4, 5.5, 5.6, 7.0, 7.1
     type: "php:7.4"
@@ -101,45 +101,45 @@ Available PHP Extensions
 This is the complete list of extensions supported by SymfonyCloud and the PHP
 versions where they can be enabled:
 
-===============  ===  ===  ===  ===  ===  ===  ===  ===
-Extension        5.4  5.5  5.6  7.0  7.1  7.2  7.3  7.4
-===============  ===  ===  ===  ===  ===  ===  ===  ===
+===============  ===  ===  ===  ===  ===  ===  ===  ===  ===
+Extension        5.4  5.5  5.6  7.0  7.1  7.2  7.3  7.4  8.0
+===============  ===  ===  ===  ===  ===  ===  ===  ===  ===
 amqp                            *    *    *    *    *
 apc              *
 apcu             *    *    *    *    *    *    *    *
 apcu_bc                         *    *    *    *    *
 applepay                        *    *         *    *
-bcmath                          *    *    *    *    *
-blackfire        *    *    *    *    *    *    *    *
-bz2                             *    *    *    *    *
-calendar                        *    *    *    *    *
-ctype                           *    *    *    *    *
-curl             *    *    *    *    *    *    *    *
-dba                             *    *    *    *    *
-dom                             *    *    *    *    *
-enchant          *    *    *    *    *    *    *    *
+bcmath                          *    *    *    *    *    *
+blackfire        *    *    *    *    *    *    *    *    *
+bz2                             *    *    *    *    *    *
+calendar                        *    *    *    *    *    *
+ctype                           *    *    *    *    *    *
+curl             *    *    *    *    *    *    *    *    *
+dba                             *    *    *    *    *    *
+dom                             *    *    *    *    *    *
+enchant          *    *    *    *    *    *    *    *    *
 event                                *    *    *    *
-exif                            *    *    *    *    *
-ffi                                                 *
-fileinfo                        *    *    *    *    *
-ftp                             *    *    *    *    *
-gd               *    *    *    *    *    *    *    *
+exif                            *    *    *    *    *    *
+ffi                                                 *    *
+fileinfo                        *    *    *    *    *    *
+ftp                             *    *    *    *    *    *
+gd               *    *    *    *    *    *    *    *    *
 gearman          *    *    *
 geoip            *    *    *    *    *    *    *    *
-gettext                         *    *    *    *    *
-gmp              *    *    *    *    *    *    *    *
+gettext                         *    *    *    *    *    *
+gmp              *    *    *    *    *    *    *    *    *
 http             *    *                        *    *
-iconv                           *    *    *    *    *
+iconv                           *    *    *    *    *    *
 igbinary                        *    *    *    *    *
 imagick          *    *    *    *    *    *    *    *
-imap             *    *    *    *    *    *    *    *
+imap             *    *    *    *    *    *    *    *    *
 interbase        *    *    *    *    *    *    *    *
-intl             *    *    *    *    *    *    *    *
+intl             *    *    *    *    *    *    *    *    *
 ioncube                         *    *    *    *
 json                       *    *    *    *    *    *
-ldap             *    *    *    *    *    *    *    *
+ldap             *    *    *    *    *    *    *    *    *
 mailparse                       *    *    *    *    *
-mbstring                        *    *    *    *    *
+mbstring                        *    *    *    *    *    *
 mcrypt           *    *    *    *    *
 memcache         *    *    *
 memcached        *    *    *    *    *    *    *    *
@@ -148,65 +148,65 @@ mongodb                         *    *    *    *    *
 msgpack                    *    *    *    *    *    *
 mssql            *    *    *
 mysql            *    *    *
-mysqli           *    *    *    *    *    *    *    *
-mysqlnd          *    *    *    *    *    *    *    *
-newrelic                   *    *    *    *    *    *
+mysqli           *    *    *    *    *    *    *    *    *
+mysqlnd          *    *    *    *    *    *    *    *    *
+newrelic                   *    *    *    *    *    *    *
 oauth                           *    *    *    *    *
-odbc             *    *    *    *    *    *    *    *
-opcache               *    *    *    *    *    *    *
-pdo              *    *    *    *    *    *    *    *
-pdo_dblib        *    *    *    *    *    *    *    *
+odbc             *    *    *    *    *    *    *    *    *
+opcache               *    *    *    *    *    *    *    *
+pdo              *    *    *    *    *    *    *    *    *
+pdo_dblib        *    *    *    *    *    *    *    *    *
 pdo_firebird     *    *    *    *    *
-pdo_mysql        *    *    *    *    *    *    *    *
-pdo_odbc         *    *    *    *    *    *    *    *
-pdo_pgsql        *    *    *    *    *    *    *    *
-pdo_sqlite       *    *    *    *    *    *    *    *
+pdo_mysql        *    *    *    *    *    *    *    *    *
+pdo_odbc         *    *    *    *    *    *    *    *    *
+pdo_pgsql        *    *    *    *    *    *    *    *    *
+pdo_sqlite       *    *    *    *    *    *    *    *    *
 pdo_sqlsrv                      *    *    *    *    *
 pecl-http                  *
-pgsql            *    *    *    *    *    *    *    *
-phar                            *    *    *    *    *
+pgsql            *    *    *    *    *    *    *    *    *
+phar                            *    *    *    *    *    *
 pinba            *    *    *
-posix                           *    *    *    *    *
+posix                           *    *    *    *    *    *
 propro                     *                   *    *
-pspell           *    *    *    *    *    *    *    *
+pspell           *    *    *    *    *    *    *    *    *
 pthreads                             *    *
 raphf                      *                   *    *
-readline         *    *    *    *    *    *    *    *
+readline         *    *    *    *    *    *    *    *    *
 recode           *    *    *    *    *    *    *
 redis            *    *    *    *    *    *    *    *
-shmop                           *    *    *    *    *
-simplexml                       *    *    *    *    *
-snmp             *    *    *    *    *    *    *    *
-soap                            *    *    *    *    *
-sockets                         *    *    *    *    *
-sodium                                    *    *    *
+shmop                           *    *    *    *    *    *
+simplexml                       *    *    *    *    *    *
+snmp             *    *    *    *    *    *    *    *    *
+soap                            *    *    *    *    *    *
+sockets                         *    *    *    *    *    *
+sodium                                    *    *    *    *
 sourceguardian                  *    *    *    *
 spplus           *    *
-sqlite3          *    *    *    *    *    *    *    *
+sqlite3          *    *    *    *    *    *    *    *    *
 sqlsrv                          *    *    *    *    *
 ssh2             *    *    *    *    *    *    *    *
-sysvmsg                         *    *    *    *    *
-sysvsem                         *    *    *    *    *
-sysvshm                         *    *    *    *    *
-tideways                        *    *    *    *    *
+sysvmsg                         *    *    *    *    *    *
+sysvsem                         *    *    *    *    *    *
+sysvshm                         *    *    *    *    *    *
+tideways                        *    *    *    *    *    *
 tideways_xhprof                 *    *    *    *    *
-tidy             *    *    *    *    *    *    *    *
-tokenizer                       *    *    *    *    *
+tidy             *    *    *    *    *    *    *    *    *
+tokenizer                       *    *    *    *    *    *
 uuid                                 *    *    *    *
 wddx                            *    *    *    *
 xcache           *    *
-xdebug           *    *    *    *    *    *    *    *
+xdebug           *    *    *    *    *    *    *    *    *
 xhprof           *    *    *
-xml                             *    *    *    *    *
-xmlreader                       *    *    *    *    *
+xml                             *    *    *    *    *    *
+xmlreader                       *    *    *    *    *    *
 xmlrpc           *    *    *    *    *    *    *    *
-xmlwriter                       *    *    *    *    *
-xsl              *    *    *    *    *    *    *    *
+xmlwriter                       *    *    *    *    *    *
+xsl              *    *    *    *    *    *    *    *    *
 yaml                                 *    *    *    *
 zbarcode                        *    *    *    *
 zendopcache      *
-zip                             *    *    *    *    *
-===============  ===  ===  ===  ===  ===  ===  ===  ===
+zip                             *    *    *    *    *    *
+===============  ===  ===  ===  ===  ===  ===  ===  ===  ===
 
 .. note::
 
