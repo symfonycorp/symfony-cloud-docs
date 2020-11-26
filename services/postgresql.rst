@@ -8,7 +8,7 @@ To use it in your application, add it to ``.symfony/services.yaml``:
 .. code-block:: yaml
 
     mydatabase:
-        # supported versions: 9.6, 10, 11, 12
+        # supported versions: 9.6, 10, 11, 12, 13
         # 9.3 is also available but not maintained upstream
         type: postgresql:12
         disk: 1024
@@ -122,7 +122,7 @@ them under the ``configuration.extensions`` key:
 
     # .symfony/services.yaml
     postgresql:
-        type: "postgresql:12"
+        type: "postgresql:13"
         disk: 1025
         configuration:
             extensions:
@@ -225,9 +225,10 @@ previous version of PostgreSQL to version 10 or above (by modifying the
 
 .. caution::
 
-   Upgrading to PostgreSQL 12 using the ``postgis`` extension is currently not
-   supported. Attempting to upgrade with this extension enabled will result in
-   a failed deployment that will require support intervention to fix.
+   Upgrading to PostgreSQL 12 and later using the ``postgis`` extension is
+   currently not supported. Attempting to upgrade with this extension enabled
+   will result in a failed deployment that will require support intervention to
+   fix.
 
    If you need to upgrade, you should follow the same steps recommended for
    performing downgrades.
