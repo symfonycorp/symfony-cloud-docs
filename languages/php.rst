@@ -8,7 +8,7 @@ property to ``php`` and select the PHP version to use:
 
     # .symfony.cloud.yaml
 
-    # supported versions: 7.3, 7.4 8.0
+    # supported versions: 7.3, 7.4, 8.0
     # security-fix only versions: 7.2
     # deprecated versions: 5.4, 5.5, 5.6, 7.0, 7.1
     type: "php:7.4"
