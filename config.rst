@@ -555,11 +555,11 @@ SymfonyCloud. It is written specifically for SymfonyCloud to ensure fast and
 reliable setup during the :ref:`build step <build-hook>`. It currently supports
 three ways to fetch the sources from:
 
-* From PECL: ``php-ext-install redis 5.3.1``
+* From PECL: ``php-ext-install redis 5.3.2``
 
-* From a URL: ``php-ext-install redis https://github.com/phpredis/phpredis/archive/5.3.1.tar.gz``
+* From a URL: ``php-ext-install redis https://github.com/phpredis/phpredis/archive/5.3.2.tar.gz``
 
-* From a Git repository: ``php-ext-install redis https://github.com/phpredis/phpredis.git 5.3.1``
+* From a Git repository: ``php-ext-install redis https://github.com/phpredis/phpredis.git 5.3.2``
 
 To ensure your application can be built properly, it is recommended to run
 ``php-ext-install`` after the configurator_ but before symfony-build_:
@@ -573,7 +573,7 @@ To ensure your application can be built properly, it is recommended to run
 
             curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
             (>&2
-                php-ext-install redis 5.3.1
+                php-ext-install redis 5.3.2
                 symfony-build
             )
 
@@ -585,7 +585,7 @@ When installing PECL PHP extensions, you can configure them directly as
     # .symfony.cloud.yaml
     variables:
         php-ext:
-            redis: 5.3.1
+            redis: 5.3.2
 
 .. note::
 
