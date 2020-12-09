@@ -219,8 +219,8 @@ Upgrading
     Be sure to take a snapshot of your master environment **before** you merge this change.
 
 PostgreSQL 10 and later include an upgrade utility that can convert databases
-from previous versions to version 10 or 11. If you upgrade your service from a
-previous version of PostgreSQL to version 10 or above (by modifying the
+from previous versions to version 10 or later. If you upgrade your service from
+a previous version of PostgreSQL to version 10 or above (by modifying the
 ``services.yaml`` file) the upgrader will run automatically.
 
 .. caution::

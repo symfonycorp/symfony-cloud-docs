@@ -10,7 +10,7 @@ To use it in your application, add it to your ``.symfony/services.yaml``:
 
     # .symfony/services.yaml
     mydatabase:
-        # supported versions: 10.0, 10.1, 10.2, 10.3, 10.4
+        # supported versions: 10.0, 10.1, 10.2, 10.3, 10.4, 10.5
         # 5.5 is also available but not maintained upstream
         type: mysql:10.4
         disk: 1024
