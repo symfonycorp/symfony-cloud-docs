@@ -249,8 +249,7 @@ a specific configuration:
             "/":
                 root: "public"
                 passthru: "/index.php"
-                index:
-                    - index.php
+                #index: [ index.php ]
                 expires: -1
                 scripts: true
                 allow: true
