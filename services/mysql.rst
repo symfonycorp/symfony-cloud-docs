@@ -1,8 +1,7 @@
 MySQL/MariaDB
 =============
 
-`MariaDB`_ is a MySQL-compatible relational database system. Its XtraDB storage
-engine is equivalent to MySQL with InnoDB.
+`MariaDB`_ is a MySQL-compatible relational database system.
 
 To use it in your application, add it to your ``.symfony/services.yaml``:
 
@@ -10,8 +9,8 @@ To use it in your application, add it to your ``.symfony/services.yaml``:
 
     # .symfony/services.yaml
     mydatabase:
-        # supported versions: 10.0, 10.1, 10.2, 10.3, 10.4, 10.5
-        # 5.5 is also available but not maintained upstream
+        # supported versions: 10.2, 10.3, 10.4, 10.5
+        # 5.5, 10.0 and 10.1 are also available but not maintained upstream
         type: mysql:10.4
         disk: 1024
 
