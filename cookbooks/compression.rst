@@ -23,12 +23,16 @@ any file type and offers some CPU optimization.
 Dynamic content
 ---------------
 
-Compression is disabled for dynamic content due to a `well known security issue
-<https://en.wikipedia.org/wiki/BREACH_%28security_exploit%29>`_. Applications
-can compress their own responses but they should not do it when responses
-include any-user specific information (such as session cookies) to prevent
-against the previously linked vulnerability. As a precautionary measure, we
-recommend **against** compressing dynamic content.
+Compression is disabled for dynamic contents to mitigate the
+`BREACH <https://en.wikipedia.org/wiki/BREACH>`_ and
+`CRIME <https://en.wikipedia.org/wiki/CRIME>`_ security exploits.
+
+Applications can compress their own responses if they wish but we recommend
+**against** compressing responses that include any-user specific information
+(such as session cookies) to prevent against those security vulnerabilities.
+
+If your application uses Symfony 5.3 or newer, you can compress dynamic contents
+because Symfony provides a built-in automatic protection against BREACH and CRIME.
 
 .. _`gzip`: https://en.wikipedia.org/wiki/Gzip
 .. _`Brotli`: https://en.wikipedia.org/wiki/Brotli
