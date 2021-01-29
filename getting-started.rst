@@ -26,7 +26,7 @@ CLI tool:
     <https://get.symfony.com/cli/setup.exe>`_ instead.
 
 Then, authenticate with your `SymfonyConnect credentials
-<https://connect.symfony.com/>`_:
+<https://symfony.com/connect/login>`_:
 
 .. code-block:: terminal
 
