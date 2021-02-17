@@ -473,7 +473,7 @@ You can change the timezone of the PHP runtime with the following configuration:
     .. code-block:: ini
 
         ; php.ini
-        date.timezone="Europe/Paris
+        date.timezone="Europe/Paris"
 
     .. code-block:: yaml
 
