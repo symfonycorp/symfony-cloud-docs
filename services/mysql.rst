@@ -11,7 +11,7 @@ To use it in your application, add it to your ``.symfony/services.yaml``:
     mydatabase:
         # supported versions: 10.2, 10.3, 10.4, 10.5
         # 5.5, 10.0 and 10.1 are also available but not maintained upstream
-        type: mysql:10.4
+        type: mariadb:10.5
         disk: 1024
 
 And wire it in ``.symfony.cloud.yaml`` (don't forget to enable the
