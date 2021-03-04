@@ -341,7 +341,7 @@ the following command:
 
 .. code-block:: terminal
 
-    $ tail -n5000 /var/log/php.access.log | awk '{print $6}' | sort -n | uniq -c
+    $ symfony ssh -- tail -n5000 /var/log/php.access.log | awk '{print $6}' | sort -n | uniq -c
 
 This will print out a table of how many requests used how much memory, in KB,
 for the last 5,000 requests that reached PHP-FPM (increase that number if your
