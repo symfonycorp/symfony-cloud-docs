@@ -77,7 +77,7 @@ Authenticated Origin Pulls
    environment created.
 
 By default, Cloudflare sits between end-users and a project on SymfonyCloud, but
-SymfonyCloud stills allows direct requests to the project (by-passing
+SymfonyCloud still allows direct requests to the project (by-passing
 Cloudflare's features and protection). This is why we recommend you to enable
 *Authenticated Origin Pulls*.
 
