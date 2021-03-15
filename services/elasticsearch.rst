@@ -9,7 +9,7 @@ To use it in your application, add it to ``.symfony/services.yaml``:
 
     # .symfony/services.yaml
     mysearch:
-        # supported versions: 6.5 and 7.2
+        # supported versions: 6.5, 7.2, 7.5, 7.6, 7.7, 7.9
         # 0.90, 1.4, 1.7, 2.4, 5.2 and 5.4 are also available but not
         # maintained upstream
         type: elasticsearch:7.2
