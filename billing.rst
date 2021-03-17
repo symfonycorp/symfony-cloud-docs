@@ -23,7 +23,7 @@ period.
 
 .. _prorations:
 
-How are managed prorations?
+How are prorations managed?
 ---------------------------
 
 SymfonyCloud relies on Stripe to compute prorations down to the second. Stripe
@@ -54,16 +54,16 @@ SC_STANDARD  | 1 × SymfonyCloud Standard plan
 \           **Total before taxes**                                                  €52.79
 =========== =================================================== ======== ========== ======
 
-Am I gonna be charged after trial?
+Will I be charged after the trial?
 ----------------------------------
 
-SymfonyCloud billing is opt-in based. You will be billed only if you explicitely
+SymfonyCloud billing is opt-in based. You will be billed only if you explicitly
 want to keep your project around after trial and accept billing using ``symfony
 project:billing:accept`` or if you move to a Production plan using ``symfony
 project:scale``.
 
 If you do not upscale your project or accept billing, you project will be
-automatically suspended at the end of your trial. If you do no pay in the days
+automatically suspended at the end of your trial. If you do not pay in the days
 following its suspension, your project will be automatically deleted.
 
 What is the difference between development and production plans?
