@@ -71,6 +71,15 @@ layer to route requests to the project for a specific domain:
    Activity 22jdotpwtrxz6 succeeded
    The domain example.com has been attached.
 
+.. caution::
+
+    Let's say you own one TLD ``my-domain.com`` and have two SymfonyCloud projects running.
+    You may want to attach ``project1.my-domain.com`` to the first and ``project2.my-domain.com``
+    to the second project. While you can easily attach the first subdomain, this will not
+    work for the second domain out of the box.
+    This is due to SymfonyCloud's "subdomain hijacking protection", you need to create a support
+    ticket so that the support can manually whitelist the ``project2.my-domain.com`` subdomain.
+
 .. tip::
 
     Multiple domains can be attached to a project. :ref:`wildcard_routes` (like
