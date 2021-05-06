@@ -73,7 +73,7 @@ layer to route requests to the project for a specific domain:
 
 .. caution::
 
-    Lets say you own one TLD ``my-domain.com`` and have two SymfonyCloud projects running.
+    Let's say you own one TLD ``my-domain.com`` and have two SymfonyCloud projects running.
     You may want to attach ``project1.my-domain.com`` to the first and ``project2.my-domain.com``
     to the second project. While you can easily attach the first subdomain, this will not
     work for the second domain out of the box.
