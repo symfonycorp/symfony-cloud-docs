@@ -78,7 +78,7 @@ layer to route requests to the project for a specific domain:
     to the second project. While you can easily attach the first subdomain, this will not
     work for the second domain out of the box.
     This is due to SymfonyCloud's "subdomain hijacking protection", you need to create a support
-    ticket so that the support can manually whitelist the `project2.my-domain.com`` subdomain.
+    ticket so that the support can manually whitelist the ``project2.my-domain.com`` subdomain.
 
 .. tip::
 
