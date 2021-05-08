@@ -34,6 +34,7 @@ rules:
     indention: ~
     unused_links: ~
     yaml_instead_of_yml_suffix: ~
+    ensure_link_definition_contains_valid_url: ~
 
 # do not report those as violation
 whitelist:
