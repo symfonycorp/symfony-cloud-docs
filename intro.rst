@@ -74,7 +74,7 @@ Building the Application
 During the build step, any dependencies specified in ``.symfony.cloud.yaml`` are
 installed on application containers.
 
-You can also customize the build step but providing a ``build`` hook composed of
+You can also customize the build step by providing a ``build`` hook composed of
 one or more shell commands that help creating your production code base. That
 could be compiling TypeScript files, running some scripts, rearranging files on
 disk, or whatever else you want. Note that at this point all you have access to
