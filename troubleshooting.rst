@@ -301,3 +301,15 @@ Please note that on SymfonyCloud, the ``master`` word will continue to be used
 (``SYMFONY_ENVIRONMENT``, activity logs, non production URLs, etc...) and if you
 use the ``SYMFONY_ENVIRONMENT`` or the ``--env`` flag locally, they need to use
 the ``master`` value as well.
+
+Unable to setup platformsh CLI: No PHP binaries detected 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You might not be able to run the cloud:* such as symfony `cloud:login`, 
+giving the follow error message: `unable to setup platformsh CLI: no PHP binaries detected`.
+It may happen on macOS, after installing php manually by running `brew install php`.
+Running the following command will solve the issue:
+
+.. code-block:: terminal
+
+   $ symfony local:php:list
