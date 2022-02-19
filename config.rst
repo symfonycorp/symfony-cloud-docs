@@ -1,558 +1,117 @@
-.symfony.cloud.yaml
-===================
+Configuration
+=============
 
-SymfonyCloud configuration is made of several files that need to be stored along
-side the project's code. The main file is called ``.symfony.cloud.yaml`` and
-must be stored in the application root directory. This file configures how the
-application is built and then deployed on SymfonyCloud.
+Platform.sh configuration is made of several files that need to be stored along side the project's code. The main file, ``.platform.app.yaml``, configures how the application is built and then deployed on Platform.sh.
 
-The best way to get started is to run ``symfony init``. This command detects
-what technologies are used by a project and generates configuration files with
-sensible defaults. This generation is made using `Open-Source templates
-<https://github.com/symfonycorp/cloud-templates>`_. Below is an example for a
-Symfony application using Flex:
+When creating a new project via ``symfony new``, use the ``--cloud`` flag to automatically generates a sensible default configuration.
+On an existing project, run ``symfony init`` instead.
 
-.. code-block:: yaml
+.. tip::
 
-    # .symfony.cloud.yaml
-    name: 'app'
-
-    type: 'php:7.4'
-
-    build:
-        flavor: 'none'
-
-    disk: 128
-
-    runtime:
-        extensions:
-            - apcu
-            - mbstring
-            - pdo_pgsql
-
-    relationships:
-        database: "mydatabase:postgresql"
-        elasticsearch: "mysearch:elasticsearch"
-
-    mounts:
-        '/var': { source: local, source_path: var }
-        '/public/upload': { source: local, source_path: uploads }
-
-    web:
-        locations:
-            '/':
-                root: 'public'
-                passthru: '/index.php'
-
-            '/upload':
-                root: 'public/upload'
-                scripts: false
-                allow: true
-
-    hooks:
-        build: |
-            set -x -e
-
-            curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
-            (>&2 symfony-build)
-        deploy: |
-            set -x -e
-
-            (>&2 symfony-deploy)
-
-.. note::
-
-    This file configures one application. If you have multiple applications
-    inside your project, you need one ``.symfony.cloud.yaml`` file at the root
-    directory of each application.
-
-    See the :doc:`Multiple applications </cookbooks/multi-apps>` cookbook for
-    more information.
-
-.. _application-name:
-
-Name
-~~~~
-
-A **unique identifier** for the application inside the project. Only lower case
-alpha-numeric characters (``a-z0-9``) are allowed.
-
-This name is used in the ``.symfony/routes.yaml`` file to define the HTTP
-upstream or in the `relationships`_ section in another ``symfony.cloud.yaml``
-within the same :doc:`multi-applications project </cookbooks/multi-apps>`.
-
-.. caution::
-
-    Changing the name of an app once it has been deployed **destroys all storage
-    volumes**; this is like deleting it and starting from scratch.
-
-Type
-~~~~
-
-The **type** value defines the application language and the version to use.
-Current supported values are:
-
-* :doc:`php </languages/php>`
-* nodejs
-* python
-* ruby
-* go
-* java (alpha support)
-
-Build
-~~~~~
-
-Defines the build flavor; use ``none`` for PHP projects.
-
-.. _config-size:
-
-Size
-~~~~
-
-Tweaks the container size. Supported values for the size key are ``AUTO`` (the
-default), ``XS``, ``S``, ``M``, ``L``, ``XL``, ``2XL`` and ``4XL``.
-
-Read the documentation about
-:doc:`resources allocations <cookbooks/resources_allocation>` for more
-details about the impact of this parameter.
-
-.. _config-disk:
-
-Disk
-~~~~
-
-Defines the disk quota for the application, in MB. The minimum disk size is
-128MB. The following are counted toward the application's disk quota:
-
-* The application root directory (source code, assets, vendors, etc);
-* Writable and persistent directories (see `Mounts`_);
-* logs (each trimmed to 10 MB automatically)
-* About 50MB for internal state and configuration
-
-When an application reaches its quota, writes are not allowed anymore. Depending
-on the application requirements, this might lead to errors.
-
-.. _mounts:
-
-Mounts
-~~~~~~
-
-By default, the application's disk is read-only. Some directories can be marked
-as persistent and writable via the ``mounts`` section; their contents are shared
-from one deployment to the next:
-
-.. code-block:: yaml
-
-    # .symfony.cloud.yaml
-    mounts:
-        '/public/upload': { source: local, source_path: uploads }
-
-The keys represent the path relative to the application root directory where the
-directory is exposed (``/public/upload`` in the example).
-
-The ``source_path`` property is the name of a subdirectory exposed from the
-global persistent storage (``uploads`` in our example).
-
-Dependencies
-~~~~~~~~~~~~
-
-Specifies dependencies that the application needs during the :ref:`build
-<build-hook>` process. These dependencies are independent of the application
-dependencies, and are installed globally in the ``PATH`` before the :ref:`build
-<build-hook>` process and are always available. SymfonyCloud supports pulling
-dependencies for the following languages:
-
-* PHP
-* Python
-* Ruby
-* Node.js
-* Java (with integrated Maven and Ant support)
-
-.. code-block:: yaml
-
-    # .symfony.cloud.yaml
-    dependencies:
-        php:
-            symfony/var-dumper: "*"
-        python:
-            behave: "*"
-        ruby:
-            sass: "3.4.7"
-        nodejs:
-            grunt-cli: "~0.1.13"
-
-Runtime
-~~~~~~~
-
-The ``runtime`` section customizes the runtime language. Possible values vary
-greatly from one language to the other. Please refer to specific language
-documentation:
-
-* :doc:`PHP </languages/php>`
-
-.. _relationships:
-
-Relationships
-~~~~~~~~~~~~~
-
-Defines how :doc:`services </services/intro>` are exposed to the application:
-
-.. code-block:: yaml
-
-    # .symfony.cloud.yaml
-    relationships:
-        database: "mydatabase:postgresql"
-        elasticsearch: "mysearch:elasticsearch"
-
-A service exposed to an application is called a **relationship**. Services are
-exposed to the application using environment variables. The key defines the name
-of the relationship and the prefix of the environment variables. The value is
-formed as ``<service>:<endpoint>``. ``service`` refers to the name of one
-service as defined in ``.symfony/services.yaml`` and ``endpoint`` refers to the
-available endpoints exposed by the service.
-
-.. note::
-
-    See the :doc:`Services documentation </services/intro>` for a complete
-    description of currently supported services types, endpoints and associated
-    environment variables.
-
-.. caution::
-
-   At this time SymfonyCloud does not support circular relationships between
-   services or applications. That means you cannot add a relationship in your
-   ``.symfony.cloud.yaml`` that points to another application or service that
-   itself points back to the first application.
-
-Web
-~~~
-
-The ``web`` section defines how the application is publicly exposed.
-
-The following subkeys are available:
-
-* `locations`_
-* `upstream`_
-* `commands`_
-
-Locations
-.........
-
-The ``locations`` section associates absolute URI prefixes (**location**) to
-a specific configuration:
-
-.. code-block:: yaml
-
-    # .symfony.cloud.yaml
-    web:
-        locations:
-            "/":
-                root: "public"
-                passthru: "/index.php"
-                #index: [ index.php ]
-                expires: -1
-                scripts: true
-                allow: true
-                rules:
-                    '\.(gif|jpe?g|png)$':
-                        expires: 60
-            "/admin":
-                expires: 300
-                passthru: true
-                allow: true
-
-Here is the reference of ``location`` configurations:
-
-* ``root`` defines the folder used to serve static content for the given
-  location, relative to the application root. Typical values for this property
-  are ``public`` or ``web``. Absolute paths are not supported.
-
-  .. caution::
-
-    SymfonyCloud requires that the location root must not be the root of the
-    project. It is important for security that private file mounts are not
-    web-accessible.
-
-* ``expires``: Enables the ``Cache-Control`` and ``Expires`` headers for static
-  resources. Can be a duration or ``-1`` for no caching (default). Times can be
-  suffixed with "ms" (milliseconds), "s" (seconds), "m" (minutes), "h" (hours),
-  "d" (days), "w" (weeks), "M" (months, 30d) or "y" (years, 365d).
-
-* ``index`` determines the file (or files) to consider when serving a request
-  for a directory. It can be a filename, an array of filenames, or ``null``.
-  Typically ``index.php``.
-
-* ``scripts`` allows or disallows execution of scripts in that location.
-  Possible values are ``true`` or ``false``, default is ``true``.
-
-* ``passthru`` makes requests forwarded to the application if the resource is
-  missing. Typical values for non-PHP applications are ``true`` or ``false``. In a
-  PHP application, the value is the path to the front controller such as
-  ``/index.php`` or ``/app.php``. The default value is ``false``.
-
-* ``headers`` defines any additional headers to apply to static assets. This
-  section is a mapping of header names to header values. Responses sent by the
-  application aren't affected.
-
-* ``allow`` allows or disallows serving files which don't match a rule. Possible
-  values are ``true`` or ``false``, default is ``true``.
-
-* ``request_buffering`` allows to enable or disable request buffering. As most
-  application servers do not support chunked requests (e.g. fpm, uwsgi),
-  ``request_buffering`` is enabled by default.
-
-* ``rules`` defines rules to override current settings for some requests. The
-  key is a PCRE regular expression that is matched against the full request URI,
-  content is the same structure as `locations`_ configuration.
-
-Upstream
-........
-
-.. note::
-
-    For PHP applications, this section is optional and generally do not need to
-    be specified.
-
-``upstream`` is an optional key that describes how the application listens to
-requests, in particular which protocol is used:
-
-.. code-block:: yaml
-
-    # .symfony.cloud.yaml
-    web:
-        upstream:
-            socket_family: tcp
-            protocol: http
-
-* ``socket_family`` describes whether the application listens on a Unix socket
-  (``unix``) or a TCP one (``tcp``, the default). When defined to ``unix``,
-  SymfonyCloud sets the ``SOCKET`` environment variable with the path to the
-  socket that the application must listen to. With ``tcp``, SymfonyCloud
-  sets the ``PORT`` environment variable with the port that the application must
-  listen on.
-
-  .. tip::
-
-    If the application is not listening at the expected location, SymfonyCloud
-    returns *502 Bad Gateway* errors.
-
-* ``protocol`` specifies if the application expects to receive incoming requests
-  over the HTTP or the FastCGI protocol. Possible values are ``http`` and
-  ``fastcgi``. The default varies depending on the runtime the application is
-  using.
-
-Commands
-........
-
-.. note::
-
-    For PHP applications, this section is optional and generally do not need to
-    be specified.
-
-Under the ``commands`` section, the ``start`` entry defines the command used to
-launch the application server listening according to the `upstream`_
-configuration:
-
-.. code-block:: yaml
-
-    # .symfony.cloud.yaml
-    web:
-        commands:
-            start: "gunicorn -b $PORT project.wsgi:application"
+    The generated files are based on `Open-Source templates <https://github.com/symfonycorp/cloud-templates>`_.
 
 Hooks
-~~~~~
+-----
 
-The ``hooks`` section defines the scripts that SymfonyCloud runs at specific
-times of an application lifecycle, build, deploy and post-deploy:
+The ``hooks`` section defines the scripts that Platform.sh runs at specific times of an application lifecycle, build, deploy and post-deploy:
 
 .. code-block:: yaml
 
-    # .symfony.cloud.yaml
+    # .platform.app.yaml
     hooks:
         build: |
             set -x -e
 
-            curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
-            (>&2 symfony-build)
+            curl -s https://get.symfony.com/cloud/configurator | bash
+            symfony-build
+
         deploy: |
             set -x -e
 
-            (>&2 symfony-deploy)
-        post_deploy: |
-            symfony console app:index
+            symfony-deploy
 
 .. caution::
 
-    Each hook is executed as a single script, so they will be considered failed
-    **only if the final command fails**. Starts the script with ``set -e`` to
-    make them fail on the first failed command, this is the behavior of default
-    templates.
+    Each hook is executed as a single script, so they will be considered failed **only if the final command fails**. Starts the script with ``set -e`` to make them fail on the first failed command, this is the behavior of default templates.
 
-Three hooks are available:
+Learn more about `hooks`_ at their official documentation page.
 
-.. _build-hook:
-
-* First, the **build** script runs when SymfonyCloud packages the application.
-  At this time, the application source code is checked out, global
-  `dependencies`_ are installed and the filesystem can be written at will but no
-  :doc:`services </services/intro>` are available.
-
-  .. caution::
-
-    The *build* step creates a container image that is tied to the Git tree
-    content being built. This image is reused for all deployments and all
-    environments, including production. This means that the build step **must**
-    be environment agnostic.
-
-  This is the best time to run heavy-duty tasks that can be performed offline
-  such as assets build or Symfony container compilation. A persisted :ref:`build
-  cache directory <build_cache_dir>` is available to you for storing reusable
-  artifacts. ``/tmp`` is also writable but its content is wiped after the build.
-
-  .. note::
-
-    Build environments (the application plus the build cache directory - not
-    limited to the ``app`` subdirectory) are limited to 4 GB during the build
-    step - independently of the mounted disk size that is allocated for
-    deployment. If you exceed this limit you will receive a ``No space left on
-    device error``. You can clear the build cache directory by using the
-    ``--clear-build-cache`` flag available on the ``symfony deploy`` command.
-
-.. _deploy-hook:
-
-* Then, the **deploy** script runs when SymfonyCloud is deploying the
-  application. During the execution of this script, services are available.
-  However, the filesystem where the application lives is read-only, except for
-  the ``mounts``. This is the perfect time to run tasks requiring services and
-  essential for a successful deployment such as database migrations.
-
-  .. caution::
-
-    All incoming requests are held until the end of the execution of
-    the *deploy* script. Make sure this script runs as fast as possible.
-
-.. _post_deploy-hook:
-
-* Finally, the **post_deploy** script runs once the application is deployed and
-  started. Requests are flowing in and as for the *deploy* script, services are
-  available but filesystem is read-only. This is the perfect time to run tasks
-  that need to be performed online but are not essential for deployment, search
-  engine indexation for example.
+To better understand the big picture and how those steps articulate with each other, we invite you to read about :ref:`building the application <application-build>` and :ref:`deploying the application <application-deploy>` in the :doc:`What is Platform.sh? </intro>` article.
 
 .. tip::
 
-    ``symfony deploy`` streams the *build* logs only. Logs for the ``deploy``
-    and ``post_deploy`` hooks are stored in ``/var/log/deploy.log``. Access them
-    via ``symfony log deploy``.
-
-To better understand the big picture and how those three steps articulate with
-each other, we invite you to read about :ref:`building the application
-<application-build>` and :ref:`deploying the application <application-deploy>`
-in the :doc:`What is SymfonyCloud? </intro>` article.
-
-.. tip::
-
-    To execute some actions during the *deploy* or *post_deploy* hooks only for
-    a specific environment (to do some anonymization for example), the simplest
-    way is to use the ``SYMFONY_BRANCH`` environment variable in a condition:
+    To execute some actions during the *deploy* or *post_deploy* hooks only for a specific environment, the simplest way is to use the ``PLATFORM_BRANCH`` environment variable in a condition:
 
     .. code-block:: yaml
 
-        # .symfony.cloud.yaml
+        # .platform.app.yaml
         hooks:
             deploy: |
-                if [ "$SYMFONY_BRANCH" != "master" ]; then
+                if [ "$PLATFORM_BRANCH" != "main" ]; then
                     symfony console app:dev:anonymize
                 fi
 
 .. _configurator:
 
-curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
-...............................................................
+Configurator
+............
 
-The **configurator** is a script specially crafted for SymfonyCloud.
-It ensures that projects are always using the most up-to-date version of some
-tools:
+The **configurator** is a script specially crafted for Platform.sh. It ensures that projects are always using the most up-to-date version of some tools:
 
 - `croncape <https://github.com/symfonycorp/croncape>`_
 - `Symfony CLI <https://symfony.com/download>`_
 - `Composer <https://getcomposer.org/download/>`_
 
-Additionally, it creates some helpers: symfony-build_, symfony-start_,
-symfony-deploy_, symfony-database-migrate_, php-ext-install_, and yarn-install_.
+Additionally, it creates some helpers: symfony-build_, symfony-start_, symfony-deploy_, symfony-database-migrate_, php-ext-install_, and yarn-install_.
 
 .. _symfony-build:
 
-(>&2 symfony-build)
-...................
+symfony-build
+.............
 
-**symfony-build** is our recipe to build a Symfony application the best way
-possible. It removes the development frontend, install the application
-dependencies using Composer (and Yarn, by running yarn-install_), optimize the
-autoloader, build Symfony cache if possible and finally build the production
-assets using Encore.
+**symfony-build** is our recipe to build a Symfony application the best way possible on Platform.sh. It removes the development frontend file if needed, install the application dependencies using Composer (and Yarn, by running yarn-install_), optimize the autoloader, build Symfony cache if possible and finally build the production assets using Encore.
 
-Composer install is run using default flag values. If you need to override those
-flags, you can define them using the ``$COMPOSER_FLAGS`` environment variable:
+Composer install is run using default flag values. If you need to override those flags, you can define them using the ``$COMPOSER_FLAGS`` environment variable:
 
 .. code-block:: yaml
 
-    # .symfony.cloud.yaml
+    # .platform.app.yaml
     hooks:
         build: |
             set -x -e
 
-            curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
-            (>&2 COMPOSER_FLAGS="--ignore-platform-reqs" symfony-build)
+            curl -s https://get.symfony.com/cloud/configurator | bash
+            COMPOSER_FLAGS="--ignore-platform-reqs" symfony-build
 
-One can also set ``NO_YARN`` to any value to disable all Yarn and assets
-automation during the symfony-build_ run.
+One can also set ``NO_YARN`` to any value to disable all Yarn and assets automation during the symfony-build_ run.
 
 .. _symfony-deploy:
 
-(>&2 symfony-deploy)
-....................
+symfony-deploy
+..............
 
-**symfony-deploy** is to be used each time a Symfony application is deployed.
-Its purpose is to run the symfony-start_ helper and when executed from the web
-container, restart FPM and run the symfony-database-migrate_ helper.
+**symfony-deploy** is to be used each time a Symfony application is deployed. Its purpose is to run the symfony-start_ helper and when executed from the web container, restart FPM and run the symfony-database-migrate_ helper.
 
 .. _symfony-start:
 
-(>&2 symfony-start)
-....................
+symfony-start
+.............
 
-**symfony-start** is to be used each time a Symfony application starts in a new
-container. Its purpose is to move the Symfony cache built by symfony-build_ to
-be used by the application or built the cache otherwise. It is automatically
-executed by symfony-deploy_ and SymfonyCloud automatically runs it before
-starting (or restarting) workers.
+**symfony-start** is to be used each time a Symfony application starts in a new container. Its purpose is to move the Symfony cache built by symfony-build_ to be used by the application or built the cache otherwise. It is automatically executed by symfony-deploy_ and Platform.sh automatically runs it before starting (or restarting) workers.
 
 .. _symfony-database-migrate:
 
-(>&2 symfony-database-migrate)
-..............................
+symfony-database-migrate
+........................
 
-You usually don't need to worry about this helper.
-**symfony-database-migrate** purpose is to run database migrations. By default,
-it will run your Doctrine migrations if ``doctrine/doctrine-migrations-bundle``
-is installed. If your application uses another migration system you can
-override ``/app/.global/bin/symfony-database-migrate`` during build time and
-symfony-deploy_ will make use of it. You can use this script at any moment if
-you need to run migrations manually or if you need to run them for
-:doc:`workers </cookbooks/workers>`.
+You usually don't need to worry about this helper. **symfony-database-migrate** purpose is to run database migrations. By default, it will run your Doctrine migrations if ``doctrine/doctrine-migrations-bundle`` is installed. If your application uses another migration system you can override ``/app/.global/bin/symfony-database-migrate`` during build time and symfony-deploy_ will make use of it. You can use this script at any moment if you need to run migrations manually or if you need to run them for workers.
 
 .. _php-ext-install:
 
 php-ext-install
 ...............
 
-**php-ext-install** is a script that you can use to compile and install PHP
-extensions not provided :ref:`out of the box <php-extensions-list>` by
-SymfonyCloud. It is written specifically for SymfonyCloud to ensure fast and
-reliable setup during the :ref:`build step <build-hook>`. It currently supports
-three ways to fetch the sources from:
+**php-ext-install** is a script that you can use to compile and install PHP extensions not provided out of the box by Platform.sh. It is written specifically for Platform.sh to ensure fast and reliable setup during the build step. It currently supports three ways to fetch the sources from:
 
 * From PECL: ``php-ext-install redis 5.3.2``
 
@@ -560,101 +119,149 @@ three ways to fetch the sources from:
 
 * From a Git repository: ``php-ext-install redis https://github.com/phpredis/phpredis.git 5.3.2``
 
-To ensure your application can be built properly, it is recommended to run
-``php-ext-install`` after the configurator_ but before symfony-build_:
+To ensure your application can be built properly, it is recommended to run ``php-ext-install`` after the configurator_ but before symfony-build_:
 
 .. code-block:: yaml
 
-    # .symfony.cloud.yaml
+    # .platform.app.yaml
     hooks:
         build: |
             set -x -e
 
-            curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
-            (>&2
-                php-ext-install redis 5.3.2
-                symfony-build
-            )
+            curl -s https://get.symfony.com/cloud/configurator | bash
+            php-ext-install redis 5.3.2
+            symfony-build
 
-When installing PECL PHP extensions, you can configure them directly as
-*variables* instead:
+When installing PECL PHP extensions, you can configure them directly as *variables* instead:
 
 .. code-block:: yaml
 
-    # .symfony.cloud.yaml
+    # .platform.app.yaml
     variables:
         php-ext:
             redis: 5.3.2
 
 .. note::
 
-   Source code is cached between builds and compilation is skipped if it has
-   already been done. Changing the source of downloads or the version will
-   invalidate this cache.
+   Source code is cached between builds and compilation is skipped if it has already been done. Changing the source of downloads or the version will invalidate this cache.
 
 .. tip::
 
-   When downloading the source code, the compression algorithm will be
-   automatically detected. The usual algorithms used by GNU tar are supported.
+   When downloading the source code, the compression algorithm will be automatically detected. The usual algorithms used by GNU tar are supported.
 
 yarn-install
 ............
 
-**yarn-install** is a script that installs Node and Yarn the best way possible
-in a PHP container on SymfonyCloud. Similarly to Composer install, you can
-customize Node setup and Yarn install behaviors using the following environment
-variables:
+**yarn-install** is a script that installs Node and Yarn the best way possible in a PHP container on Platform.sh. Similarly to Composer install, you can customize Node setup and Yarn install behaviors using the following environment variables:
 
-* ``NVM_DIR``: Directory used to install NVM and Node. Default value is
-  ``/app/.nvm``.
+* ``NVM_DIR``: Directory used to install NVM and Node. Default value is ``/app/.nvm``.
 
-* ``NODE_VERSION``: Pinpoint the Node version that NVM is going to install.
-  Default is ``--lts``
+* ``NODE_VERSION``: Pinpoint the Node version that NVM is going to install. Default is ``--lts``
 
 * ``YARN_FLAGS``: Flags to pass to ``yarn install``. No value by default.
 
-Shall you need to use the Node installation setup by symfony-build_, you can
-use the following snippet:
+Shall you need to use the Node installation setup by symfony-build_, you can use the following snippet:
 
 .. code-block:: yaml
 
-    # .symfony.cloud.yaml
+    # .platform.app.yaml
     hooks:
         build: |
             set -x -e
 
-            curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
-            (>&2 symfony-build)
-            (>&2
-                # Setup everything to use the Node installation
-                unset NPM_CONFIG_PREFIX
-                export NVM_DIR=${SYMFONY_APP_DIR}/.nvm
-                set +x && . "${NVM_DIR}/nvm.sh" use --lts && set -x
-                # Starting from here, everything is setup to use the same Node
-                yarn encore dev
-            )
+            curl -s https://get.symfony.com/cloud/configurator | bash
+            symfony-build
+
+            # Setup everything to use the Node installation
+            unset NPM_CONFIG_PREFIX
+            export NVM_DIR=${SYMFONY_APP_DIR}/.nvm
+            set +x && . "${NVM_DIR}/nvm.sh" use --lts && set -x
+            # Starting from here, everything is setup to use the same Node
+            yarn encore dev
 
 Or if you want to use two different Node versions:
 
 .. code-block:: yaml
 
-    # .symfony.cloud.yaml
+    # .platform.app.yaml
     hooks:
         build: |
             set -x -e
 
-            curl -s https://get.symfony.com/cloud/configurator | (>&2 bash)
-            (>&2 symfony-build)
-            (>&2
-                cd web/js_app
-                unset NPM_CONFIG_PREFIX
-                export NVM_DIR=${SYMFONY_APP_DIR}/.nvm
+            curl -s https://get.symfony.com/cloud/configurator | bash
+            symfony-build
 
-                NODE_VERSION=8 yarn-install
+            cd web/js_app
+            unset NPM_CONFIG_PREFIX
+            export NVM_DIR=${SYMFONY_APP_DIR}/.nvm
 
-                # Setup everything to use the Node installation
-                set +x && . "${NVM_DIR}/nvm.sh" use 8 && set -x
+            NODE_VERSION=8 yarn-install
 
-                # Starting from here, everything is setup to use Node 8
-                yarn build --environment=prod
-            )
+            # Setup everything to use the Node installation
+            set +x && . "${NVM_DIR}/nvm.sh" use 8 && set -x
+
+            # Starting from here, everything is setup to use Node 8
+            yarn build --environment=prod
+
+Cron Jobs
+---------
+
+Cron jobs allow you to run scheduled tasks at specified times or intervals. To get feedback when something goes wrong, prefix the command with ``croncape``. ``croncape`` will send an email to the address defined by the ``MAILTO`` environment variable. Don't forget to set it first via the following command:
+
+.. code-block:: terminal
+
+    $ symfony var:create -y --level=project --name=env:MAILTO --value=sysadmin@example.com
+
+.. tip::
+
+    If you want to run a command in a cron hook for specific environments, check the ``PLATFORM_BRANCH`` environment variable:
+
+    .. code-block:: yaml
+
+        crons:
+            snapshot:
+                spec: 0 5 * * *
+                cmd: |
+                    # only run for the main branch, aka production
+                    if [ "$PLATFORM_BRANCH" = "main" ]; then
+                        croncape symfony ... --no-wait
+                    fi
+
+.. note::
+
+    To ensure better reliability, by default ``croncape`` sends its emails using ``project-id@cron.noreply.platformsh.site`` as the sender address (``project-id+branch@cron.noreply.platformsh.site`` for non-main environments) and the provided :ref:`Platform.sh SMTP <email-env-vars>` service; even if you define your own ``MAILER_*`` environment variables.
+
+    If you wish to use a custom SMTP and/or use a custom sender address you need to follow these steps:
+
+    #. Define the sender address by defining the ``MAILFROM`` environment variable;
+    #. Define the environment variables required to use your own email service, refers to the :ref:`email <email-env-vars>` documentation to check their names. Please note that only SMTP connections are supported;
+    #. Disable the provided SMTP service using ``symfony cloud:env:info enable_smtp false``
+
+Workers
+-------
+
+**Workers** (or consumers) are a great way to off-load processing in the background to make a website as snap as possible. Implementing workers in Symfony is made easy thanks to the `Messenger component </doc/current/components/messenger.html>`_. This is why deploying workers is a first-class use-case with Platform.sh.
+
+To deploy a worker, add an entry under the ``workers`` section:
+
+.. code-block:: yaml
+
+    # .platform.app.yaml
+    workers:
+        mails:
+            commands:
+                start: symfony console messenger:consume --time-limit=60 --memory-limit=128M
+
+On Platform.sh, worker containers run the exact same code as the web container. The container image is built only once, and then deployed multiple times in its own container along the web one. The *build* hook and dependencies may not vary but as these containers are independent they can be customized the same way using common properties (default values are the one defined for the main container).
+
+The ``commands.start`` key is required and specifies the command to use to launch the application worker. If the command specified by the ``start`` key terminates it will be restarted automatically.
+
+.. tip::
+
+    Running the ``symfony-deploy`` command before starting your worker is not necessary anymore, Platform.sh takes care of running it automatically.
+
+.. caution::
+
+    Web and worker containers do not share mounts targets. Sharing files between those containers using the filesystem is not possible. Every data sharing needs to be done using services.
+
+.. _`hooks`: https://docs.platform.sh/configuration/app/hooks/hooks-comparison.html
