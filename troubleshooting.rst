@@ -30,7 +30,7 @@ Because Platform.sh manages this file for you (preventing disks to get filled an
             buffer:
                 type: buffer
 
-**If you log deprecations, don’t forget to log them on** ``stderr`` **as well.**
+**If you log deprecations, don't forget to log them on** ``stderr`` **as well.**
 
 Oops! An Error Occurred
 -----------------------
@@ -45,7 +45,7 @@ The server returned a "500 Internal Server Error"
    :align: center
    :class: with-browser
 
-If your application works locally but you see this message on Platform.sh it usually means you have a configuraton error or missing a dependency.
+If your application works locally but you see this message on Platform.sh it usually means you have a configuration error or missing a dependency.
 
 To fix this issue you have to inspect application logs, the cause of the error is usually specified in the error message:
 
@@ -85,4 +85,4 @@ But with this page when running on Platform.sh:
 
 This is because Platform.sh runs in production mode and as such Symfony shown a generic 404 error. To fix this, you will have to `create your first Symfony page <https://symfony.com/doc/current/page_creation.html>`_.
 
-If you already created a custom page, check that all your files are commited, that you ran ``symfony deploy`` and it succeeded.
+If you already created a custom page, check that all your files are committed, that you ran ``symfony deploy`` and it succeeded.
