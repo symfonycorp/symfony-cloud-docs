@@ -1,4 +1,4 @@
-SymfonyCloud Documentation
+Platform.sh Documentation
 ==========================
 
-This repository contains the documentation for [SymfonyCloud](https://symfony.com/doc/cloud).
+This repository contains the documentation for [Platform.sh](https://symfony.com/doc/cloud).

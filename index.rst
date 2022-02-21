@@ -1,5 +1,5 @@
-SymfonyCloud Documentation
-==========================
+Platform.sh for Symfony Documentation
+=====================================
 
 .. toctree::
     :maxdepth: 2
@@ -8,11 +8,5 @@ SymfonyCloud Documentation
     intro
     getting-started
     config
-    routes
-    services/intro
-    cookbooks/index
-    integrations/index
-    languages/index
+    env
     troubleshooting
-    faq
-    billing
