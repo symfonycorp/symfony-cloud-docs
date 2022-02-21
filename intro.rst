@@ -24,7 +24,7 @@ Projects are deployed in **environments**. An environment is a standalone copy o
 
 Every project you deploy on Platform.sh is built as a *virtual cluster*, containing a series of containers. The main branch of your Git repository is always deployed as a production cluster. Any other branch can be deployed as a production, staging, or development cluster.
 
-There are three types of containers within your cluster, all configured by files stored along side your code:
+There are three types of containers within your cluster, all configured by files stored alongside your code:
 
 * The *Router*, configured in ``.platform/routes.yaml``, is a single nginx process responsible for mapping incoming requests to an Application container, and to optionally provide HTTP caching.
 

@@ -45,7 +45,7 @@ For Symfony projects, information about services are also exposed via environmen
 
 The following sections lists all exposed environment variables that are automatically defined for each service. Each environment variable is prefixed by the relationship name. For instance, given the following relationships:
 
-.. code-block: yaml
+.. code-block:: yaml
 
     relationships:
         database: "securitydb:postgresql"
@@ -172,7 +172,7 @@ RabbitMQ
 * ``RABBITMQ_SCHEME``: The RabbitMQ scheme
 * ``RABBITMQ_USER``: The RabbitMQ username
 * ``RABBITMQ_USERNAME``: The RabbitMQ username
-* ``RABBITMQ_PASSWORD``: The RabbitMQ passsword
+* ``RABBITMQ_PASSWORD``: The RabbitMQ password
 
 MongoDB
 -------
