@@ -25,8 +25,8 @@ There are three steps needed to deploy a project on Platform.sh:
 
 * Deploy the project.
 
-Configuring Platform.sh for a Projet
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Configuring Platform.sh for a Project
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to play with Platform.sh with a simple sample project, create a Symfony Demo project:
 
