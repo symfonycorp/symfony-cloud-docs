@@ -71,7 +71,7 @@ The server returned a "404 Not Found"
 
 New Symfony applications comes without controllers by default. This means there's no page to show as a homepage. When running your project locally you should have been welcomed with this page:
 
-.. image:: https://symfony.com/uploads/assets/blog/new-symfony-welcome-page.png
+.. image:: _includes/new-symfony-welcome-page.png
    :alt: The default Symfony welcome page in the development mode
    :align: center
    :class: with-browser
