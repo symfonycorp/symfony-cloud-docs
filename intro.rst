@@ -81,7 +81,7 @@ The documentation on symfony.com *only* describes the integration between Platfo
 
 To get a feeling of what it looks like working with Symfony on Platform.sh, jump to the `Getting Started <getting-started>`_ guide.
 
-.. _`Platform.sh`: https://docs.platform.sh/
+.. _`Platform.sh`: https://platform.sh/marketplace/symfony/?utm_source=symfony-cloud-sign-up&utm_medium=backlink&utm_campaign=Symfony-Cloud-sign-up&utm_content=project-in-the-cloud
 .. _`support ticket`: https://console.platform.sh/-/users/~/tickets/open
 .. _`official documentation`: https://docs.platform.sh/
 .. _`Symfony CLI`: https://symfony.com/download

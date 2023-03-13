@@ -6,7 +6,11 @@ Getting Started
 Installing the Symfony CLI Tool
 -------------------------------
 
-To manage your Symfony projects with Platform.sh, you need Git, SSH, and the ``symfony`` CLI tool. Go to the `Download`_ page for instructions on how to install the Symfony CLI tool on your local machine.
+To manage your Symfony projects with `Platform.sh`_, you will need:
+
+* Git and SSH;
+* The ``symfony`` CLI tool (go to the `Download`_ page for instructions on how to install it on your local machine);
+* `A Platform.sh account`_.
 
 To get started with the Symfony CLI tool, run ``symfony`` to get some common commands or ``symfony help`` to list all available commands.
 
@@ -16,7 +20,7 @@ To get started with the Symfony CLI tool, run ``symfony`` to get some common com
 
 .. note::
 
-    On Windows, you may have to use `Git Bash`_ instead of Powershell to run the CLI commands due to compatibility reasons
+    On Windows, you may have to use `Git Bash`_ instead of Powershell to run the CLI commands due to compatibility reasons.
 
 Deploying a Project on Platform.sh
 ----------------------------------
@@ -61,7 +65,7 @@ If you have a closer look at ``.platform.app.yaml`` for a Symfony project, you w
 Creating a Project in the Cloud
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Then, create a new Platform.sh project (you will need to create a Platform.sh account):
+Then, create a new Platform.sh project (you will need to `create a Platform.sh account`_):
 
 .. code-block:: terminal
 
@@ -158,6 +162,9 @@ Iterate by changing the code, committing, and deploying. When satisfied with the
 
     For a long running branch, you can keep the code up-to-date with ``main`` via ``git merge main`` or ``git rebase main``. And you can also keep the data in sync with the production environment via ``symfony env:sync``.
 
+.. _`Platform.sh`: https://platform.sh/marketplace/symfony/?utm_source=symfony-cloud-sign-up&utm_medium=backlink&utm_campaign=Symfony-Cloud-sign-up&utm_content=installing-cli-tool
+.. _`A Platform.sh account`: https://platform.sh/try-it-now
+.. _`create a Platform.sh account`: https://platform.sh/try-it-now
 .. _`official Platform.sh documentation`: https://docs.platform.sh/
 .. _`Download`: https://symfony.com/download
 .. _`authorize Platform.sh`: https://docs.platform.sh/guides/general/composer-auth.html#private-repository-hosting
