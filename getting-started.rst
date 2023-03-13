@@ -14,6 +14,10 @@ To get started with the Symfony CLI tool, run ``symfony`` to get some common com
 
     Even if you can use the Platform.sh CLI tool, we highly recommend you to use the Symfony CLI tool as it provides a tighter integration with Symfony via specific commands. When using a command from the `official Platform.sh documentation`_, replace ``platform`` with ``symfony``.
 
+.. note::
+
+    On Windows, you may have to use `Git Bash`_ instead of Powershell to run the CLI commands due to compatibility reasons
+
 Deploying a Project on Platform.sh
 ----------------------------------
 
@@ -157,3 +161,4 @@ Iterate by changing the code, committing, and deploying. When satisfied with the
 .. _`official Platform.sh documentation`: https://docs.platform.sh/
 .. _`Download`: https://symfony.com/download
 .. _`authorize Platform.sh`: https://docs.platform.sh/guides/general/composer-auth.html#private-repository-hosting
+.. _`Git Bash`: https://gitforwindows.org/
