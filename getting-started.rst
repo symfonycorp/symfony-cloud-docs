@@ -163,8 +163,8 @@ Iterate by changing the code, committing, and deploying. When satisfied with the
     For a long running branch, you can keep the code up-to-date with ``main`` via ``git merge main`` or ``git rebase main``. And you can also keep the data in sync with the production environment via ``symfony env:sync``.
 
 .. _`Platform.sh`: https://platform.sh/marketplace/symfony/?utm_source=symfony-cloud-sign-up&utm_medium=backlink&utm_campaign=Symfony-Cloud-sign-up&utm_content=installing-cli-tool
-.. _`A Platform.sh account`: https://platform.sh/try-it-now
-.. _`create a Platform.sh account`: https://platform.sh/try-it-now
+.. _`A Platform.sh account`: https://platform.sh/try-it-now/?utm_source=symfony-cloud-sign-up&utm_medium=backlink&utm_campaign=Symfony-Cloud-sign-up&utm_content=project-in-the-cloud
+.. _`create a Platform.sh account`: https://platform.sh/try-it-now/?utm_source=symfony-cloud-sign-up&utm_medium=backlink&utm_campaign=Symfony-Cloud-sign-up&utm_content=project-in-the-cloud
 .. _`official Platform.sh documentation`: https://docs.platform.sh/
 .. _`Download`: https://symfony.com/download
 .. _`authorize Platform.sh`: https://docs.platform.sh/guides/general/composer-auth.html#private-repository-hosting
